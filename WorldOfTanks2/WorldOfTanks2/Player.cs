@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,11 @@ namespace WorldOfTanks2
         public Player(float x, float y, float height, float width) : base(x, y, height, width)
         {
 
+        }
+        public void Move(float goX, float goY)
+        {
+            x += goX;
+            y += goY;
         }
     }
 }

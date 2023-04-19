@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Listener.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="GameObject.cs" />

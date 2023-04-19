@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK.Input;
+using System.Windows.Forms;
 
 namespace WorldOfTanks2
 {
@@ -17,21 +19,31 @@ namespace WorldOfTanks2
         private List<GameObject> objectsToRemove;
 
         private List<GameObject> objectsToAdd;
+
+        Listener listener;
+
+        private System.Windows.Forms.Label label;
+
         public Scene(System.Windows.Forms.Label label)
         {
             objects = new List<GameObject>();
             objectsToRemove = new List<GameObject>();
             objectsToAdd = new List<GameObject>();
-            someObjects();
-            label.Text = objectsToAdd.Count.ToString();
+            listener = new Listener();
+            SpawnPlayers();
+            this.label = label;
         }
 
         public void UpdateScene()
         {
-            Random random = new Random();
-            GL.ClearColor(new Color4((float)random.Next(255) / 255, (float)random.Next(255) / 255, (float)random.Next(255) / 255, 1f));
+
+            GL.ClearColor(0, 0.1f, 0, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
+
+            if (objects.Count != 0) listener.CheckKeyDown((Player)objects[0], (Player)objects[1]);
+            
             UpdateObjectsArray();
+            label.Text = objects[1].X.ToString() + " " + objects[1].Y.ToString();
             foreach(GameObject obj in objects)
             {
                 obj.Draw();
@@ -59,12 +71,10 @@ namespace WorldOfTanks2
             objectsToRemove.Add(gameObject);
         }
 
-        public void someObjects()
+        public void SpawnPlayers()
         {
-            objectsToAdd.Add(new Player(0, 0, 0.1f, 0.1f));
-            objectsToAdd.Add(new Player(0.5f, 0.5f, 0.2f, 0.2f));
-            objectsToAdd.Add(new Player(-0.5f, -0.5f, 0.1f, 0.1f));
-            objectsToAdd.Add(new Player(0.7f, 0.9f, 0.2f, 0.2f));
+            objectsToAdd.Add(new Player(-0.7f, -0.5f, 0.2f, 0.2f));
+            objectsToAdd.Add(new Player(0.7f, 0.5f, 0.1f, 0.1f));
         }
     }
 }

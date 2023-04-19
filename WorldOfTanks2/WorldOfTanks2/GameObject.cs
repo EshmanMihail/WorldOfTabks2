@@ -38,7 +38,6 @@ namespace WorldOfTanks2
             yLower = y - (float)height / 2;
 
             GL.PointSize(30);
-
             GL.Begin(PrimitiveType.Quads);
 
             GL.Vertex2(xLeft, yLower);
