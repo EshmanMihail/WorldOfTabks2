@@ -22,16 +22,15 @@ namespace WorldOfTanks2
 
         Listener listener;
 
-        private System.Windows.Forms.Label label;
+        //private System.Windows.Forms.Label label;
 
-        public Scene(System.Windows.Forms.Label label)
+        public Scene()
         {
             objects = new List<GameObject>();
             objectsToRemove = new List<GameObject>();
             objectsToAdd = new List<GameObject>();
             listener = new Listener();
             SpawnPlayers();
-            this.label = label;
         }
 
         public void UpdateScene()
@@ -39,15 +38,15 @@ namespace WorldOfTanks2
             GL.ClearColor(0, 0.1f, 0, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            if (objects.Count != 0) listener.CheckKeyDown((Player)objects[0], (Player)objects[1]);
-            
+            if (objects.Count != 0) listener.CheckKeyDown((Tank)objects[0], (Tank)objects[1], objectsToAdd);
+
             UpdateObjectsArray();
-            label.Text = ((Player)objects[1]).gunType.ToString();
             foreach(GameObject obj in objects)
             {
                 obj.Draw();
             }
         }
+
         private void UpdateObjectsArray()
         {
             if (objectsToRemove.Count != 0)
@@ -65,15 +64,10 @@ namespace WorldOfTanks2
             }
         }
 
-        public void RemoveObject(GameObject gameObject)
-        {
-            objectsToRemove.Add(gameObject);
-        }
-
         public void SpawnPlayers()
         {
-            objectsToAdd.Add(new Player(-0.7f, -0.5f, 0.2f, 0.2f));
-            objectsToAdd.Add(new Player(0.7f, 0.5f, 0.1f, 0.1f));
+            objectsToAdd.Add(new Tank(-0.7f, -0.5f, 0.2f, 0.2f));
+            objectsToAdd.Add(new Tank(0.7f, 0.5f, 0.2f, 0.2f));
         }
     }
 }

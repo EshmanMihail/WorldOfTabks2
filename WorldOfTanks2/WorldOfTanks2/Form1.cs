@@ -21,7 +21,7 @@ namespace WorldOfTanks2
         {
             InitializeComponent();
             CenterToScreen();
-            scene = new Scene(label1);
+            scene = new Scene();
             timer1.Interval = 36;
             timer1.Start();
         }

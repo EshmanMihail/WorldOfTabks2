@@ -16,6 +16,7 @@ namespace WorldOfTanks2
         protected float y;
         protected float height;
         protected float width;
+
         public GameObject(float x, float y, float height, float width)
         {
             this.x = x;
@@ -23,11 +24,7 @@ namespace WorldOfTanks2
             this.height = height;
             this.width = width;
         }
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Height { get; set; }
-        public float Width { get; set; }
-
+        
         public virtual void Draw()
         {
             float xLeft, xRight, yUpper, yLower;
@@ -37,7 +34,6 @@ namespace WorldOfTanks2
             yUpper = y + (float)height / 2;
             yLower = y - (float)height / 2;
 
-            GL.PointSize(30);
             GL.Begin(PrimitiveType.Quads);
 
             GL.Vertex2(xLeft, yLower);
