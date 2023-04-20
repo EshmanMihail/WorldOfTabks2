@@ -10,7 +10,7 @@ using System.Drawing;
 
 namespace WorldOfTanks2
 {
-    public class GameObject : IDisposable
+    public abstract class GameObject : IDisposable
     {
         protected float x;
         protected float y;
@@ -44,7 +44,7 @@ namespace WorldOfTanks2
             GL.End();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
 
         }

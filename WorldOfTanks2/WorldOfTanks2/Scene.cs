@@ -22,8 +22,6 @@ namespace WorldOfTanks2
 
         Listener listener;
 
-        //private System.Windows.Forms.Label label;
-
         public Scene()
         {
             objects = new List<GameObject>();
@@ -41,6 +39,7 @@ namespace WorldOfTanks2
             if (objects.Count != 0) listener.CheckKeyDown((Tank)objects[0], (Tank)objects[1], objectsToAdd);
 
             UpdateObjectsArray();
+            
             foreach(GameObject obj in objects)
             {
                 obj.Draw();
@@ -61,6 +60,7 @@ namespace WorldOfTanks2
             {
                 objects.AddRange(objectsToAdd);
                 objectsToAdd.Clear();
+                MessageBox.Show(objects.Count.ToString());
             }
         }
 

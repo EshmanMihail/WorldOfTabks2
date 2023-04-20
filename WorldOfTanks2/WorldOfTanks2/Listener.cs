@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace WorldOfTanks2
 {
     /// <summary>
-    /// Класс "Слушатель" проверяет нажатые клавиши.
+    /// Класс "Слушатель" проверяет нажатые клавиши и вызывает нужные события.
     /// </summary>
     public class Listener
     {
@@ -39,7 +39,6 @@ namespace WorldOfTanks2
             if (keyboard[Key.G] && keyboard[Key.G] != lastkeyboardState[Key.G])
                 objectsToAdd.Add(player1.Shoot());
 
-
             if (keyboard[Key.Up])
                 player2.Move(0, speed, "U");
 
@@ -59,6 +58,7 @@ namespace WorldOfTanks2
                 objectsToAdd.Add(player2.Shoot());
 
             lastkeyboardState = keyboard;
+
         }
     }
 }
