@@ -36,14 +36,13 @@ namespace WorldOfTanks2
 
         public void UpdateScene()
         {
-
             GL.ClearColor(0, 0.1f, 0, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             if (objects.Count != 0) listener.CheckKeyDown((Player)objects[0], (Player)objects[1]);
             
             UpdateObjectsArray();
-            label.Text = objects[1].X.ToString() + " " + objects[1].Y.ToString();
+            label.Text = ((Player)objects[1]).gunType.ToString();
             foreach(GameObject obj in objects)
             {
                 obj.Draw();
