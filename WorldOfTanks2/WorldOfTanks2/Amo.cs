@@ -17,7 +17,7 @@ namespace WorldOfTanks2
         public override void Draw()
         {
             base.Draw();
-            if (y > -1 && y < 1 && x < 1 && x > -1) Move();
+            if (y > -0.9f && y < 0.9f && x < 0.9f && x > -0.9f) Move();
             else { }
         }
 

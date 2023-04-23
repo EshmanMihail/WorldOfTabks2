@@ -20,30 +20,47 @@ namespace WorldOfTanks2
 
         private List<GameObject> objectsToAdd;
 
-        Listener listener;
+        Action action;
+
+        Maze maze;
 
         public Scene()
         {
             objects = new List<GameObject>();
             objectsToRemove = new List<GameObject>();
             objectsToAdd = new List<GameObject>();
-            listener = new Listener();
+            action = new Action();
+            maze = new Maze();
             SpawnPlayers();
         }
 
         public void UpdateScene()
         {
-            GL.ClearColor(0, 0.1f, 0, 1f);
+            GL.ClearColor(0.3f, 0.5f, 0.3f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            if (objects.Count != 0) listener.CheckKeyDown((Tank)objects[0], (Tank)objects[1], objectsToAdd);
+            BuildMaze();
+
+            if (objects.Count != 0) action.CheckAction((Tank)objects[0], (Tank)objects[1], objectsToAdd);
 
             UpdateObjectsArray();
-            
-            foreach(GameObject obj in objects)
+
+            DrawObjects();
+        }
+
+        private void DrawObjects()
+        {
+            foreach (GameObject obj in objects)
             {
                 obj.Draw();
             }
+        }
+
+        private void BuildMaze()
+        {
+            maze.BuildSideWalls();
+            maze.BuildWalls();
+            maze.BuildBarrier();
         }
 
         private void UpdateObjectsArray()
@@ -60,14 +77,14 @@ namespace WorldOfTanks2
             {
                 objects.AddRange(objectsToAdd);
                 objectsToAdd.Clear();
-                MessageBox.Show(objects.Count.ToString());
+                //MessageBox.Show(objects.Count.ToString());
             }
         }
 
         public void SpawnPlayers()
         {
-            objectsToAdd.Add(new Tank(-0.7f, -0.5f, 0.2f, 0.2f));
-            objectsToAdd.Add(new Tank(0.7f, 0.5f, 0.2f, 0.2f));
+            objectsToAdd.Add(new Tank(0, -0.5f, 0.1f, 0.1f));
+            objectsToAdd.Add(new Tank(0, 0.5f, 0.1f, 0.1f));
         }
     }
 }

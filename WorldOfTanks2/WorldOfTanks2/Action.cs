@@ -9,18 +9,15 @@ using System.Windows.Forms;
 namespace WorldOfTanks2
 {
     /// <summary>
-    /// Класс "Слушатель" проверяет нажатые клавиши и вызывает нужные события.
+    /// Класс проверяет нажатые клавиши и вызывает нужные события.
     /// </summary>
-    public class Listener
+    public class Action
     {
         private float speed = 0.01f;
 
         KeyboardState lastkeyboardState;
-
-        public void CheckKeyDown(Tank player1, Tank player2, List<GameObject> objectsToAdd)
+        private void FirstPlayerAction(KeyboardState keyboard, Tank player1, List<GameObject> objectsToAdd)
         {
-            KeyboardState keyboard = Keyboard.GetState();
-
             if (keyboard[Key.W])
                 player1.Move(0, speed, "U");
 
@@ -38,7 +35,9 @@ namespace WorldOfTanks2
 
             if (keyboard[Key.G] && keyboard[Key.G] != lastkeyboardState[Key.G])
                 objectsToAdd.Add(player1.Shoot());
-
+        }
+        private void SecondPlayerAction(KeyboardState keyboard, Tank player2, List<GameObject> objectsToAdd)
+        {
             if (keyboard[Key.Up])
                 player2.Move(0, speed, "U");
 
@@ -56,6 +55,15 @@ namespace WorldOfTanks2
 
             if (keyboard[Key.KeypadMinus] && keyboard[Key.KeypadMinus] != lastkeyboardState[Key.KeypadMinus])
                 objectsToAdd.Add(player2.Shoot());
+        }
+
+        public void CheckAction(Tank player1, Tank player2, List<GameObject> objectsToAdd)
+        {
+            KeyboardState keyboard = Keyboard.GetState();
+
+            FirstPlayerAction(keyboard, player1, objectsToAdd);
+
+            SecondPlayerAction(keyboard, player2, objectsToAdd);
 
             lastkeyboardState = keyboard;
 

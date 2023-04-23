@@ -14,16 +14,15 @@ namespace WorldOfTanks2
         public string gunType = "bigPushka"; 
         private int numberToChangeGunType = 1; 
 
-
         public Tank(float x, float y, float height, float width) : base(x, y, height, width)
         {
             
         }
-        public void Move(float goX, float goY, string newAction)
+        public void Move(float goX, float goY, string newDirection)
         {
             x += goX;
             y += goY;
-            direction = newAction;
+            direction = newDirection;
         }
 
         public void ChangeGun()
