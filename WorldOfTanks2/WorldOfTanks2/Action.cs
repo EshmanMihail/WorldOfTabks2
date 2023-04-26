@@ -59,6 +59,7 @@ namespace WorldOfTanks2
 
         public void CheckAction(Tank player1, Tank player2, List<GameObject> objectsToAdd)
         {
+
             KeyboardState keyboard = Keyboard.GetState();
 
             FirstPlayerAction(keyboard, player1, objectsToAdd);

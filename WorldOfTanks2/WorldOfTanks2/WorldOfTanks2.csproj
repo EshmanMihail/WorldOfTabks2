@@ -54,6 +54,9 @@
   <ItemGroup>
     <Compile Include="Amo.cs" />
     <Compile Include="Action.cs" />
+    <Compile Include="Barrier.cs" />
+    <Compile Include="Wall.cs" />
+    <Compile Include="Collision.cs" />
     <Compile Include="Maze.cs" />
     <Compile Include="Tank.cs" />
     <Compile Include="Scene.cs" />

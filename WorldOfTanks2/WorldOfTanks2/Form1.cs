@@ -11,6 +11,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK;
 using OpenTK.Graphics;
 using System.Xml.Linq;
+using OpenTK.Platform;
 
 namespace WorldOfTanks2
 {
@@ -22,13 +23,14 @@ namespace WorldOfTanks2
             InitializeComponent();
             CenterToScreen();
             scene = new Scene();
-            timer1.Interval = 36;
+            
+            timer1.Interval = 16;
             timer1.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-                
+
         }
 
         private void glControl1_Load(object sender, EventArgs e)

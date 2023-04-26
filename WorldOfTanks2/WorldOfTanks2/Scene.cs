@@ -24,22 +24,27 @@ namespace WorldOfTanks2
 
         Maze maze;
 
+        /// <summary>
+        /// Создание сцены.
+        /// </summary>
         public Scene()
         {
             objects = new List<GameObject>();
             objectsToRemove = new List<GameObject>();
             objectsToAdd = new List<GameObject>();
             action = new Action();
-            maze = new Maze();
+            maze = new Maze(this);
             SpawnPlayers();
+            SpawnWallsAndBarriers();
         }
 
+        /// <summary>
+        /// В этом методе параметры сцены должны обновляться.
+        /// </summary>
         public void UpdateScene()
         {
             GL.ClearColor(0.3f, 0.5f, 0.3f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
-
-            BuildMaze();
 
             if (objects.Count != 0) action.CheckAction((Tank)objects[0], (Tank)objects[1], objectsToAdd);
 
@@ -48,6 +53,9 @@ namespace WorldOfTanks2
             DrawObjects();
         }
 
+        /// <summary>
+        /// Метод отрисовки всех объектов на сцене.
+        /// </summary>
         private void DrawObjects()
         {
             foreach (GameObject obj in objects)
@@ -56,13 +64,9 @@ namespace WorldOfTanks2
             }
         }
 
-        private void BuildMaze()
-        {
-            maze.BuildSideWalls();
-            maze.BuildWalls();
-            maze.BuildBarrier();
-        }
-
+        /// <summary>
+        /// Метод, позволяющий обновлять количество объектов для обработки динамически.
+        /// </summary>
         private void UpdateObjectsArray()
         {
             if (objectsToRemove.Count != 0)
@@ -81,10 +85,48 @@ namespace WorldOfTanks2
             }
         }
 
+        /// <summary>
+        /// Получение списка с объектами на сцене.
+        /// </summary>
+        /// <returns>Список объектов на сцене.</returns>
+        public List<GameObject> GetGameObjects()
+        {
+            return objects;
+        }
+
+        /// <summary>
+        /// Метод добавления объекта на сцену.
+        /// </summary>
+        public void AddObject(GameObject gameObject)
+        {
+            objectsToAdd.Add(gameObject);
+        }
+
+        /// <summary>
+        /// Метод удаления объекта со сцены.
+        /// </summary>
+        public void RemoveObject(GameObject gameObject)
+        {
+            objectsToRemove.Add(gameObject);
+        }
+
+        /// <summary>
+        /// Метод, добавляющий игроков на сцену.
+        /// </summary>
         public void SpawnPlayers()
         {
-            objectsToAdd.Add(new Tank(0, -0.5f, 0.1f, 0.1f));
-            objectsToAdd.Add(new Tank(0, 0.5f, 0.1f, 0.1f));
+            objectsToAdd.Add(new Tank(0, -0.5f, 0.1f, 0.1f, 1));
+            objectsToAdd.Add(new Tank(0, 0.5f, 0.1f, 0.1f, 2));
         }
+
+        /// <summary>
+        /// Метод, добовляющий стены и барьеры на сцену.
+        /// </summary>
+        public void SpawnWallsAndBarriers()
+        {
+            maze.AddWalls();
+            maze.AddBarries();
+        }
+
     }
 }
