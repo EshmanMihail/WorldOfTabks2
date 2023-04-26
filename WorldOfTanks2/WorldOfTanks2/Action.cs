@@ -1,6 +1,7 @@
 ﻿using OpenTK.Input;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,60 +14,89 @@ namespace WorldOfTanks2
     /// </summary>
     public class Action
     {
-        private float speed = 0.01f;
+        private float TankSpeed = 0.01f;
 
-        KeyboardState lastkeyboardState;
-        private void FirstPlayerAction(KeyboardState keyboard, Tank player1, List<GameObject> objectsToAdd)
+        private int gunTypeFirstPlayer = 0;
+        Weapon[] weaponFirstPlayer = { new Trunk(), new Machinegun() };
+
+        private int gunTypeSecondPlayer = 0;
+        Weapon[] weaponSecondPlayer = { new Trunk(), new Machinegun() };
+
+        KeyboardState lastkeyboardState1;
+        KeyboardState keyboard1;
+
+        KeyboardState keyboard2;
+        KeyboardState lastkeyboardState2;
+        private void FirstPlayerAction(Tank player1, List<GameObject> objectsToAdd)
         {
-            if (keyboard[Key.W])
-                player1.Move(0, speed, "U");
+            keyboard1 = Keyboard.GetState();
 
-            if (keyboard[Key.S])
-                player1.Move(0, -speed, "D");
+            if (keyboard1[Key.W])
+                player1.Move(0, TankSpeed, "U");
 
-            if (keyboard[Key.D])
-                player1.Move(speed, 0, "R");
+            if (keyboard1[Key.S])
+                player1.Move(0, -TankSpeed, "D");
 
-            if (keyboard[Key.A])
-                player1.Move(-speed, 0, "L");
+            if (keyboard1[Key.D])
+                player1.Move(TankSpeed, 0, "R");
 
-            if (keyboard[Key.Q] && keyboard[Key.Q] != lastkeyboardState[Key.Q])
-                player1.ChangeGun();
+            if (keyboard1[Key.A])
+                player1.Move(-TankSpeed, 0, "L");
 
-            if (keyboard[Key.G] && keyboard[Key.G] != lastkeyboardState[Key.G])
-                objectsToAdd.Add(player1.Shoot());
+            if (keyboard1[Key.Q] && (keyboard1[Key.Q] != lastkeyboardState1[Key.Q]))
+                ChangeGunFirstPlayer();
+
+            if (keyboard1[Key.G] && (keyboard1[Key.G] != lastkeyboardState1[Key.G]))
+                player1.Shoot(weaponFirstPlayer[gunTypeFirstPlayer]);
+
+            lastkeyboardState1 = keyboard1;
+
         }
-        private void SecondPlayerAction(KeyboardState keyboard, Tank player2, List<GameObject> objectsToAdd)
+
+        public void ChangeGunFirstPlayer()
         {
-            if (keyboard[Key.Up])
-                player2.Move(0, speed, "U");
+            if (gunTypeFirstPlayer == 0) gunTypeFirstPlayer = 1;
+            else gunTypeFirstPlayer = 0;
+        }
 
-            if (keyboard[Key.Down])
-                player2.Move(0, -speed, "D");
+        private void SecondPlayerAction(Tank player2, List<GameObject> objectsToAdd)
+        {
+            keyboard2 = Keyboard.GetState();
 
-            if (keyboard[Key.Right])
-                player2.Move(speed, 0, "R");
+            if (keyboard2[Key.Up])
+                player2.Move(0, TankSpeed, "U");
 
-            if (keyboard[Key.Left])
-                player2.Move(-speed, 0, "L");
+            if (keyboard2[Key.Down])
+                player2.Move(0, -TankSpeed, "D");
 
-            if (keyboard[Key.KeypadPlus] && keyboard[Key.KeypadPlus] != lastkeyboardState[Key.KeypadPlus])
-                player2.ChangeGun();
+            if (keyboard2[Key.Right])
+                player2.Move(TankSpeed, 0, "R");
 
-            if (keyboard[Key.KeypadMinus] && keyboard[Key.KeypadMinus] != lastkeyboardState[Key.KeypadMinus])
-                objectsToAdd.Add(player2.Shoot());
+            if (keyboard2[Key.Left])
+                player2.Move(-TankSpeed, 0, "L");
+
+            if (keyboard2[Key.KeypadPlus] && keyboard2[Key.KeypadPlus] != lastkeyboardState2[Key.KeypadPlus])
+                ChangeGunSecondPlayer();
+
+            if (keyboard2[Key.KeypadMinus] && keyboard2[Key.KeypadMinus] != lastkeyboardState2[Key.KeypadMinus])
+            {
+                player2.Shoot(weaponSecondPlayer[gunTypeSecondPlayer]);
+            }
+            lastkeyboardState2 = keyboard2;
+        }
+
+        public void ChangeGunSecondPlayer()
+        {
+            if (gunTypeSecondPlayer == 0) gunTypeSecondPlayer = 1;
+            else gunTypeSecondPlayer = 0;
         }
 
         public void CheckAction(Tank player1, Tank player2, List<GameObject> objectsToAdd)
         {
 
-            KeyboardState keyboard = Keyboard.GetState();
+            FirstPlayerAction(player1, objectsToAdd);
 
-            FirstPlayerAction(keyboard, player1, objectsToAdd);
-
-            SecondPlayerAction(keyboard, player2, objectsToAdd);
-
-            lastkeyboardState = keyboard;
+            SecondPlayerAction(player2, objectsToAdd);
 
         }
     }

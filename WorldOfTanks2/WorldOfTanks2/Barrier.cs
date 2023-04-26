@@ -13,5 +13,9 @@ namespace WorldOfTanks2
         {
             this.objectType = objectType;
         }
+        public override void Draw()
+        {
+            base.Draw();
+        }
     }
 }

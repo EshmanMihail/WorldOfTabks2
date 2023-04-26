@@ -15,9 +15,6 @@ namespace WorldOfTanks2
         public int hp = 100;
         public bool destroied = false;
 
-        public string gunType = "trunk"; 
-        private int numberToChangeGunType = 1; 
-
         public Tank(float x, float y, float height, float width, int objectType) : base(x, y, height, width)
         {
             this.objectType = objectType;
@@ -33,30 +30,14 @@ namespace WorldOfTanks2
             x += goX;
             y += goY;
             direction = newDirection;
-        }
-
-        public void ChangeGun()
-        {
-            numberToChangeGunType = 3 - numberToChangeGunType;
-            if (numberToChangeGunType % 2 == 0) 
-            { 
-                gunType = "machinegun";
-                numberToChangeGunType = 2;
-            }
-            else
-            {
-                gunType = "trunk";
-                numberToChangeGunType = 1;
-            }
-        }
+        } 
 
         /// <summary>
-        /// Создаёт снаряд.
+        /// Стреляет из выбранного оружия.
         /// </summary>
-        public GameObject Shoot()
+        public void Shoot(Weapon weapon)
         {
-            GameObject objAmo = new Amo(x, y, 0.05f, 0.05f, 3, direction);
-            return objAmo;
+            weapon.Shoot();
         }
     }
 }

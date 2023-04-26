@@ -11,11 +11,12 @@ namespace WorldOfTanks2
     {
         private int objectType;
         private string direction;
-        private float speedOfAmo = 0.03f;
+        private float speedOfAmo;
 
-        public Amo(float x, float y, float height, float width, int objectType, string direction) : base(x, y, height, width)
+        public Amo(float x, float y, float height, float width, int objectType, float speedOfAmo, string direction) : base(x, y, height, width)
         {
             this.objectType = objectType;
+            this.speedOfAmo = speedOfAmo;
             this.direction = direction;
         }
 
