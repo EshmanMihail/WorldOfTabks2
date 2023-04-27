@@ -17,7 +17,9 @@ namespace WorldOfTanks2
         {
             this.scene = scene;
         }
-
+        /// <summary>
+        /// Массив с координатами стен, где чётный элемент массива - х координата, а нечётный у.
+        /// </summary>
         private List<float> coodsOfWalls = new List<float>()
         {
               0.2f, -0.1f, 0.4f, -0.1f, 0.6f, -0.1f,  0.6f, -0.2f,  0.6f, -0.3f,
@@ -31,18 +33,27 @@ namespace WorldOfTanks2
              -0.85f, 0.7f,  0.85f, -0.7f,  0.85f, 0.7f, -0.85f, -0.7f
         };
 
+        /// <summary>
+        /// Массив с координатами барьеров, где чётный элемент массива - х координата, а нечётный у.
+        /// </summary>
         private List<float> coodsOfBarriers = new List<float>()
         {
              0.3f, -0.1f,  0.5f, -0.1f,  -0.3f, 0.1f,  -0.5f, 0.1f,  -0.85f, -0.4f, -0.75f, -0.4f,
              -0.55f, -0.4f,  -0.45f, -0.4f,  0.85f, 0.4f,  0.75f, 0.4f,  0.55f, 0.4f,  0.45f, 0.4f,
              0.3f, -0.7f,  -0.3f, 0.7f
         };
-        public void AddWalls()
+
+        /// <summary>
+        /// Создаёт стены.
+        /// </summary>
+        public void CreateWalls()
         {
+            //добавляет стены внутри карты
             for (int i = 0; i < coodsOfWalls.Count; i += 2)
             {
                 scene.AddObject(new Wall(coodsOfWalls[i], coodsOfWalls[i + 1], 0.1f, 0.1f, 4));
             }
+            //добавляет стены по краям карты
             float xbegin = 0.95f, ybegin = 0.95f;
             Math.Round(ybegin, 2);
             while (ybegin >= -0.95f)
@@ -67,7 +78,10 @@ namespace WorldOfTanks2
             }
         }
 
-        public void AddBarries()
+        /// <summary>
+        /// Создаёт барьеры.
+        /// </summary>
+        public void CreateBarries()
         {
             for (int i = 0; i < coodsOfBarriers.Count; i += 2)
             {

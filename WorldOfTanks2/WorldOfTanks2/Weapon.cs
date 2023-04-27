@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace WorldOfTanks2
 {
+    /// <summary>
+    /// Абстрактный класс, описывающий пушки танка в игре.
+    /// </summary>
     public abstract class Weapon
     {
         public abstract int Damage { get; }
-        public abstract void Shoot();
+        public abstract float AmoSpeed { get; }
+        public abstract float AmoSize { get; }
+        public abstract int Ammunition();
+        public abstract void AmmunitionMinusMinus();
     }
 }

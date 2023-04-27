@@ -124,8 +124,8 @@ namespace WorldOfTanks2
         /// </summary>
         public void SpawnWallsAndBarriers()
         {
-            maze.AddWalls();
-            maze.AddBarries();
+            maze.CreateWalls();
+            maze.CreateBarries();
         }
 
     }

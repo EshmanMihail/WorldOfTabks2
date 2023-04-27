@@ -10,6 +10,9 @@ using System.Drawing;
 
 namespace WorldOfTanks2
 {
+    /// <summary>
+    /// Абстрактный класс, описывающий объект в игре.
+    /// </summary>
     public abstract class GameObject : IDisposable
     {
         protected float x;

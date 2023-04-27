@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WorldOfTanks2
 {
+    /// <summary>
+    /// Стена. Через неё нельзя стрелять и нельзя проехать.
+    /// </summary>
     public class Wall : GameObject
     {
         private int objectType;

@@ -7,16 +7,21 @@ using System.Windows.Forms;
 
 namespace WorldOfTanks2
 {
+    /// <summary>
+    /// Класс, описывающий выпущенный патрон.
+    /// </summary>
     public class Amo : GameObject
     {
-        private int objectType;
+        private int objectType; // 3
         private string direction;
         private float speedOfAmo;
+        public int Damage { get; set; }
 
-        public Amo(float x, float y, float height, float width, int objectType, float speedOfAmo, string direction) : base(x, y, height, width)
+        public Amo(float x, float y, float height, float width, int objectType, float speedOfAmo, int damage, string direction) : base(x, y, height, width)
         {
             this.objectType = objectType;
             this.speedOfAmo = speedOfAmo;
+            Damage = damage;
             this.direction = direction;
         }
 
