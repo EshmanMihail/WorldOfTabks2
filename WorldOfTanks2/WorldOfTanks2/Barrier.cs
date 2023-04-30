@@ -9,12 +9,11 @@ namespace WorldOfTanks2
     /// <summary>
     /// Класс барьер - это стена, через которую можно стрелять, но нельзя проехать.
     /// </summary>
-    public class Barrier : GameObject
+    public class Barrier : GameObject // 5
     {
-        private int objectType;//
-        public Barrier(float x, float y, float height, float width, int objectType) : base(x, y, width, height)
+        public Barrier(float x, float y, float height, float width, int objectType) : base(x, y, width, height, objectType)
         {
-            this.objectType = objectType;
+
         }
         public override void Draw()
         {

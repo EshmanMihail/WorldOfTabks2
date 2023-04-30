@@ -10,16 +10,14 @@ namespace WorldOfTanks2
     /// <summary>
     /// Класс, описывающий выпущенный патрон.
     /// </summary>
-    public class Amo : GameObject
+    public class Amo : GameObject // 3
     {
-        private int objectType; // 3
         private string direction;
         private float speedOfAmo;
         public int Damage { get; set; }
 
-        public Amo(float x, float y, float height, float width, int objectType, float speedOfAmo, int damage, string direction) : base(x, y, height, width)
+        public Amo(float x, float y, float height, float width, int objectType, float speedOfAmo, int damage, string direction) : base(x, y, height, width, objectType)
         {
-            this.objectType = objectType;
             this.speedOfAmo = speedOfAmo;
             Damage = damage;
             this.direction = direction;
@@ -48,6 +46,11 @@ namespace WorldOfTanks2
                     x -= speedOfAmo;
                     break;
             }
+        }
+
+        public string GetAmoDerection()
+        {
+            return direction;
         }
     }
 }

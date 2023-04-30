@@ -1,4 +1,5 @@
-﻿using OpenTK.Input;
+﻿using OpenTK;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,17 @@ namespace WorldOfTanks2
     /// <summary>
     /// Класс, описывающий танк.
     /// </summary>
-    public class Tank : GameObject
+    public class Tank : GameObject // 1, 2
     {
-        private int objectType; // 1, 2
         private string direction = "U";
+        private float speed = 0.007f;
         public int hp = 100;
         private int fuelReserve = 100;
         public bool destroied = false;
-
-        public Tank(float x, float y, float height, float width, int objectType) : base(x, y, height, width)
+        
+        public Tank(float x, float y, float height, float width, int objectType) : base(x, y, height, width, objectType)
         {
-            this.objectType = objectType;
+            
         }
 
         public override void Draw()
@@ -29,10 +30,23 @@ namespace WorldOfTanks2
             base.Draw();
         }
 
-        public void Move(float goX, float goY, string newDirection)
+        public void Move(string newDirection)
         {
-            x += goX;
-            y += goY;
+            switch (newDirection)
+            {
+                case "U":
+                    y += speed;
+                    break;
+                case "D":
+                    y -= speed;
+                    break;
+                case "R":
+                    x += speed;
+                    break;
+                case "L":
+                    x -= speed;
+                    break;
+            }
             direction = newDirection;
         } 
 
@@ -58,7 +72,7 @@ namespace WorldOfTanks2
                     break;
             }
             weapon.AmmunitionMinusMinus();
-            return new Amo(amo_x, amo_y, weapon.AmoSize, weapon.AmoSize, 3, weapon.AmoSpeed, weapon.Damage, direction);
+            return new Amo(amo_x, amo_y, weapon.AmoSize, weapon.AmoSize, objectType, weapon.AmoSpeed, weapon.Damage, direction);
         }
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace WorldOfTanks2
             objects = new List<GameObject>();
             objectsToRemove = new List<GameObject>();
             objectsToAdd = new List<GameObject>();
-            action = new Action();
+            action = new Action(this);
             maze = new Maze(this);
             SpawnPlayers();
             SpawnWallsAndBarriers();
@@ -46,11 +46,20 @@ namespace WorldOfTanks2
             GL.ClearColor(0.3f, 0.5f, 0.3f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            if (objects.Count != 0) action.CheckAction((Tank)objects[0], (Tank)objects[1], objectsToAdd);
+            if (objects.Count != 0) action.CheckAction((Tank)objects[0], (Tank)objects[1]);
 
             UpdateObjectsArray();
 
             DrawObjects();
+        }
+
+        public int CheckHealthPlayer1()
+        {
+            return ((Tank)objects[0]).hp;
+        }
+        public int CheckHealthPlayer2()
+        {
+            return ((Tank)objects[1]).hp;
         }
 
         /// <summary>

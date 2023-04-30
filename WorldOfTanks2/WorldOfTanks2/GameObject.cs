@@ -11,7 +11,7 @@ using System.Drawing;
 namespace WorldOfTanks2
 {
     /// <summary>
-    /// Абстрактный класс, описывающий объект в игре.
+    /// Абстрактный класс, описывающий базовые свойства объекта в игре.
     /// </summary>
     public abstract class GameObject : IDisposable
     {
@@ -19,13 +19,15 @@ namespace WorldOfTanks2
         protected float y;
         protected float height;
         protected float width;
+        protected int objectType;
 
-        public GameObject(float x, float y, float height, float width)
+        public GameObject(float x, float y, float height, float width, int objectType)
         {
             this.x = x;
             this.y = y; 
             this.height = height;
             this.width = width;
+            this.objectType = objectType;
         }
         
         public virtual void Draw()
@@ -45,6 +47,26 @@ namespace WorldOfTanks2
             GL.Vertex2(xLeft, yUpper);
 
             GL.End();
+        }
+
+        public float Get_X()
+        {
+            return x;
+        }
+
+        public float Get_Y()
+        {
+            return y;
+        }
+
+        public float Get_Width()
+        {
+            return width;
+        }
+
+        public int Get_ObjectType()
+        {
+            return objectType;
         }
 
         public virtual void Dispose()

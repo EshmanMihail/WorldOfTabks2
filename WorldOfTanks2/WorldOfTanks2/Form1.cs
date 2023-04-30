@@ -23,8 +23,11 @@ namespace WorldOfTanks2
             InitializeComponent();
             CenterToScreen();
             scene = new Scene();
-            
-            timer1.Interval = 36;
+
+            progressBar1.Value = 100;
+            progressBar2.Value = 100;
+
+            timer1.Interval = 8;
             timer1.Start();
         }
 
@@ -45,7 +48,30 @@ namespace WorldOfTanks2
         private void timer1_Tick(object sender, EventArgs e)
         {
             scene.UpdateScene();
+            CheckHealthPlayers();
             glControl1.Refresh();
+        }
+
+        private void CheckHealthPlayers()
+        {
+            if (scene.CheckHealthPlayer1() <= 0)
+            {
+                progressBar1.Value = 0;
+                timer1.Stop();
+            }
+            else
+            {
+                progressBar1.Value = scene.CheckHealthPlayer1();
+            }
+            if (scene.CheckHealthPlayer2() <= 0)
+            {
+                progressBar2.Value = 0;
+                timer1.Stop();
+            }
+            else
+            {
+                progressBar2.Value = scene.CheckHealthPlayer2();
+            }
         }
     }
 }
