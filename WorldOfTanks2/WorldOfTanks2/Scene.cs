@@ -24,6 +24,8 @@ namespace WorldOfTanks2
 
         Maze maze;
 
+        PlayersStatistics statistics;
+
         /// <summary>
         /// Создание сцены.
         /// </summary>
@@ -34,6 +36,7 @@ namespace WorldOfTanks2
             objectsToAdd = new List<GameObject>();
             action = new Action(this);
             maze = new Maze(this);
+            statistics = new PlayersStatistics(this);
             SpawnPlayers();
             SpawnWallsAndBarriers();
         }
@@ -51,15 +54,6 @@ namespace WorldOfTanks2
             UpdateObjectsArray();
 
             DrawObjects();
-        }
-
-        public int CheckHealthPlayer1()
-        {
-            return ((Tank)objects[0]).hp;
-        }
-        public int CheckHealthPlayer2()
-        {
-            return ((Tank)objects[1]).hp;
         }
 
         /// <summary>

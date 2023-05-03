@@ -18,7 +18,7 @@ namespace WorldOfTanks2
 
         public override float AmoSize => 0.03f;
 
-        public override float AmoSpeed => 0.2f;
+        public override float AmoSpeed => 0.08f;
 
         public override int Ammunition()
         {

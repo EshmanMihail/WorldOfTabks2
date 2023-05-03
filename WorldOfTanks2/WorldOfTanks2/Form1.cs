@@ -18,16 +18,21 @@ namespace WorldOfTanks2
     public partial class Form1 : Form
     {
         Scene scene;
+
+        PlayersStatistics playersStatistics;
         public Form1()
         {
             InitializeComponent();
             CenterToScreen();
             scene = new Scene();
+            playersStatistics = new PlayersStatistics(scene);
 
             progressBar1.Value = 100;
             progressBar2.Value = 100;
+            progressBar3.Value = 100;
+            progressBar4.Value = 100;
 
-            timer1.Interval = 8;
+            timer1.Interval = 15;
             timer1.Start();
         }
 
@@ -49,28 +54,49 @@ namespace WorldOfTanks2
         {
             scene.UpdateScene();
             CheckHealthPlayers();
+            CheckFuelPlayers();
             glControl1.Refresh();
+        }
+
+        private void CheckFuelPlayers()
+        {
+            if (playersStatistics.CheckFuelPlayer1() <= 0)
+            {
+                progressBar3.Value = 0;
+            }
+            else
+            {
+                progressBar3.Value = playersStatistics.CheckFuelPlayer1();
+            }
+            if (playersStatistics.CheckFuelPlayer2() <= 0)
+            {
+                progressBar4.Value = 0;
+            }
+            else
+            {
+                progressBar4.Value = playersStatistics.CheckFuelPlayer2();
+            }
         }
 
         private void CheckHealthPlayers()
         {
-            if (scene.CheckHealthPlayer1() <= 0)
+            if (playersStatistics.CheckHealthPlayer1() <= 0)
             {
                 progressBar1.Value = 0;
                 timer1.Stop();
             }
             else
             {
-                progressBar1.Value = scene.CheckHealthPlayer1();
+                progressBar1.Value = playersStatistics.CheckHealthPlayer1();
             }
-            if (scene.CheckHealthPlayer2() <= 0)
+            if (playersStatistics.CheckHealthPlayer2() <= 0)
             {
                 progressBar2.Value = 0;
                 timer1.Stop();
             }
             else
             {
-                progressBar2.Value = scene.CheckHealthPlayer2();
+                progressBar2.Value = playersStatistics.CheckHealthPlayer2();
             }
         }
     }

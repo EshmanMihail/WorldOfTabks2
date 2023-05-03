@@ -17,7 +17,7 @@ namespace WorldOfTanks2
         private string direction = "U";
         private float speed = 0.007f;
         public int hp = 100;
-        private int fuelReserve = 100;
+        public int fuelReserve = 1000;
         public bool destroied = false;
         
         public Tank(float x, float y, float height, float width, int objectType) : base(x, y, height, width, objectType)
@@ -32,20 +32,24 @@ namespace WorldOfTanks2
 
         public void Move(string newDirection)
         {
-            switch (newDirection)
+            if (fuelReserve > 0)
             {
-                case "U":
-                    y += speed;
-                    break;
-                case "D":
-                    y -= speed;
-                    break;
-                case "R":
-                    x += speed;
-                    break;
-                case "L":
-                    x -= speed;
-                    break;
+                switch (newDirection)
+                {
+                    case "U":
+                        y += speed;
+                        break;
+                    case "D":
+                        y -= speed;
+                        break;
+                    case "R":
+                        x += speed;
+                        break;
+                    case "L":
+                        x -= speed;
+                        break;
+                }
+                fuelReserve -= 1;
             }
             direction = newDirection;
         } 

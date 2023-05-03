@@ -41,51 +41,45 @@ namespace WorldOfTanks2
             {
                 if (player.Get_ObjectType() == obj.Get_ObjectType()) continue;
 
-                if (obj is Amo && obj.Get_Width() == 0.03f && player.Get_ObjectType() != obj.Get_ObjectType())
-                {
-                    switch (((Amo)obj).GetAmoDerection())
-                    {
-                        case "U":
-                            if (x - player.Get_Width() / 2 <= obj.Get_X() && x + player.Get_Width() / 2 >= obj.Get_X())
-                            {
-                                player.hp -= ((Amo)obj).Damage;
-                                scene.RemoveObject(obj);
-                            }
-                            break;
-                        case "D":
-                            if (x - player.Get_Width() / 2 <= obj.Get_X() && x + player.Get_Width() / 2 >= obj.Get_X())
-                            {
-                                player.hp -= ((Amo)obj).Damage;
-                                scene.RemoveObject(obj);
-                            }
-                            break;
-                        case "R":
-                            if (y - player.Get_Width() / 2 <= obj.Get_Y() && y + player.Get_Width() / 2 >= obj.Get_Y())
-                            {
-                                player.hp -= ((Amo)obj).Damage;
-                                scene.RemoveObject(obj);
-                            }
-                            break;
-                        case "L":
-                            if (y - player.Get_Width() / 2 <= obj.Get_Y() && y + player.Get_Width() / 2 >= obj.Get_Y())
-                            {
-                                player.hp -= ((Amo)obj).Damage;
-                                scene.RemoveObject(obj);
-                            }
-                            break;
-                    }
-                }
-                if (obj is Amo && obj.Get_Width() > 0.03f && Math.Abs(x - obj.Get_X()) <= obj.Get_Width() && Math.Abs(y - obj.Get_Y()) <= obj.Get_Width())
-                {
-                    player.hp -= ((Amo)obj).Damage;
-                    scene.RemoveObject(obj);
-                }
                 if (Math.Abs(x - obj.Get_X()) <= obj.Get_Width() && Math.Abs(y - obj.Get_Y()) <= obj.Get_Width())
                 {
                     return true;
                 }
             }
 
+            return false;
+        }
+        private bool CheckCollisionWithAmmo(Tank player1, Tank player2)
+        {
+            foreach (GameObject ammo in scene.GetGameObjects())
+            {
+                if (ammo is Amo)
+                {
+                    foreach (GameObject obj in scene.GetGameObjects())
+                    {
+                        if (obj.Get_ObjectType() == 1 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
+                            obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
+                            && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                        {
+                            player1.hp -= ((Amo)ammo).Damage;
+                            scene.RemoveObject(ammo);
+                        }
+                        if (obj.Get_ObjectType() == 2 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
+                            obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
+                            && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                        {
+                            player2.hp -= ((Amo)ammo).Damage;
+                            scene.RemoveObject(ammo);
+                        }
+                        if (obj.Get_ObjectType() == 4 && obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() &&
+                            obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
+                           && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                        {
+                            scene.RemoveObject(ammo);
+                        }
+                    }
+                }
+            }
             return false;
         }
 
@@ -181,6 +175,8 @@ namespace WorldOfTanks2
 
         public void CheckAction(Tank player1, Tank player2)
         {
+
+            CheckCollisionWithAmmo(player1, player2);
 
             FirstPlayerAction(player1);
 

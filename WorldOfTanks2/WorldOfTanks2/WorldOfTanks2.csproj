@@ -56,6 +56,7 @@
     <Compile Include="Action.cs" />
     <Compile Include="Barrier.cs" />
     <Compile Include="Machinegun.cs" />
+    <Compile Include="PlayersStatistics.cs" />
     <Compile Include="Trunk.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="Maze.cs" />
