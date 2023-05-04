@@ -33,13 +33,19 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.glControl1 = new OpenTK.GLControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.health1 = new System.Windows.Forms.ProgressBar();
+            this.health2 = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
+            this.fuelRsrf1 = new System.Windows.Forms.ProgressBar();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
+            this.fuelRsrf2 = new System.Windows.Forms.ProgressBar();
+            this.healthPlayer1 = new System.Windows.Forms.Label();
+            this.fuelPlayer2 = new System.Windows.Forms.Label();
+            this.fuelPlayer1 = new System.Windows.Forms.Label();
+            this.healthPlayer2 = new System.Windows.Forms.Label();
+            this.Player1 = new System.Windows.Forms.Label();
+            this.cooldown1 = new System.Windows.Forms.Label();
+            this.cooldown2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +61,7 @@
             // 
             this.glControl1.AutoScroll = true;
             this.glControl1.BackColor = System.Drawing.Color.Black;
-            this.glControl1.Location = new System.Drawing.Point(13, 130);
+            this.glControl1.Location = new System.Drawing.Point(13, 147);
             this.glControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.glControl1.Name = "glControl1";
             this.glControl1.Size = new System.Drawing.Size(740, 660);
@@ -68,69 +74,129 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // progressBar1
+            // health1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 28);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(155, 23);
-            this.progressBar1.TabIndex = 1;
+            this.health1.Location = new System.Drawing.Point(12, 40);
+            this.health1.Name = "health1";
+            this.health1.Size = new System.Drawing.Size(155, 23);
+            this.health1.TabIndex = 1;
             // 
-            // progressBar2
+            // health2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(597, 28);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(156, 23);
-            this.progressBar2.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Игрок 1";
+            this.health2.Location = new System.Drawing.Point(588, 38);
+            this.health2.Name = "health2";
+            this.health2.Size = new System.Drawing.Size(155, 25);
+            this.health2.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(697, 9);
+            this.label2.Location = new System.Drawing.Point(594, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Игрок 2";
             // 
-            // progressBar3
+            // fuelRsrf1
             // 
-            this.progressBar3.Location = new System.Drawing.Point(12, 57);
-            this.progressBar3.Maximum = 1000;
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(180, 23);
-            this.progressBar3.TabIndex = 5;
+            this.fuelRsrf1.Location = new System.Drawing.Point(12, 90);
+            this.fuelRsrf1.Maximum = 1500;
+            this.fuelRsrf1.Name = "fuelRsrf1";
+            this.fuelRsrf1.Size = new System.Drawing.Size(180, 25);
+            this.fuelRsrf1.TabIndex = 5;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // progressBar4
+            // fuelRsrf2
             // 
-            this.progressBar4.Location = new System.Drawing.Point(563, 57);
-            this.progressBar4.Maximum = 1000;
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(190, 23);
-            this.progressBar4.TabIndex = 6;
+            this.fuelRsrf2.Location = new System.Drawing.Point(563, 90);
+            this.fuelRsrf2.Maximum = 1500;
+            this.fuelRsrf2.Name = "fuelRsrf2";
+            this.fuelRsrf2.Size = new System.Drawing.Size(180, 25);
+            this.fuelRsrf2.TabIndex = 6;
+            // 
+            // healthPlayer1
+            // 
+            this.healthPlayer1.AutoSize = true;
+            this.healthPlayer1.Location = new System.Drawing.Point(10, 21);
+            this.healthPlayer1.Name = "healthPlayer1";
+            this.healthPlayer1.Size = new System.Drawing.Size(71, 16);
+            this.healthPlayer1.TabIndex = 7;
+            this.healthPlayer1.Text = "Здоровье";
+            // 
+            // fuelPlayer2
+            // 
+            this.fuelPlayer2.AutoSize = true;
+            this.fuelPlayer2.Location = new System.Drawing.Point(648, 71);
+            this.fuelPlayer2.Name = "fuelPlayer2";
+            this.fuelPlayer2.Size = new System.Drawing.Size(105, 16);
+            this.fuelPlayer2.TabIndex = 9;
+            this.fuelPlayer2.Text = "Запас топлива";
+            // 
+            // fuelPlayer1
+            // 
+            this.fuelPlayer1.AutoSize = true;
+            this.fuelPlayer1.Location = new System.Drawing.Point(10, 71);
+            this.fuelPlayer1.Name = "fuelPlayer1";
+            this.fuelPlayer1.Size = new System.Drawing.Size(105, 16);
+            this.fuelPlayer1.TabIndex = 10;
+            this.fuelPlayer1.Text = "Запас топлива";
+            // 
+            // healthPlayer2
+            // 
+            this.healthPlayer2.AutoSize = true;
+            this.healthPlayer2.Location = new System.Drawing.Point(682, 21);
+            this.healthPlayer2.Name = "healthPlayer2";
+            this.healthPlayer2.Size = new System.Drawing.Size(71, 16);
+            this.healthPlayer2.TabIndex = 11;
+            this.healthPlayer2.Text = "Здоровье";
+            // 
+            // Player1
+            // 
+            this.Player1.AutoSize = true;
+            this.Player1.Location = new System.Drawing.Point(114, 9);
+            this.Player1.Name = "Player1";
+            this.Player1.Size = new System.Drawing.Size(53, 16);
+            this.Player1.TabIndex = 12;
+            this.Player1.Text = "Игрок1";
+            // 
+            // cooldown1
+            // 
+            this.cooldown1.AutoSize = true;
+            this.cooldown1.Location = new System.Drawing.Point(10, 118);
+            this.cooldown1.Name = "cooldown1";
+            this.cooldown1.Size = new System.Drawing.Size(98, 16);
+            this.cooldown1.TabIndex = 13;
+            this.cooldown1.Text = "Перезарядка:";
+            // 
+            // cooldown2
+            // 
+            this.cooldown2.AutoSize = true;
+            this.cooldown2.Location = new System.Drawing.Point(629, 118);
+            this.cooldown2.Name = "cooldown2";
+            this.cooldown2.Size = new System.Drawing.Size(98, 16);
+            this.cooldown2.TabIndex = 14;
+            this.cooldown2.Text = "Перезарядка:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 803);
-            this.Controls.Add(this.progressBar4);
-            this.Controls.Add(this.progressBar3);
+            this.ClientSize = new System.Drawing.Size(782, 833);
+            this.Controls.Add(this.cooldown2);
+            this.Controls.Add(this.cooldown1);
+            this.Controls.Add(this.Player1);
+            this.Controls.Add(this.healthPlayer2);
+            this.Controls.Add(this.fuelPlayer1);
+            this.Controls.Add(this.fuelPlayer2);
+            this.Controls.Add(this.healthPlayer1);
+            this.Controls.Add(this.fuelRsrf2);
+            this.Controls.Add(this.fuelRsrf1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.health2);
+            this.Controls.Add(this.health1);
             this.Controls.Add(this.glControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -150,13 +216,19 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private OpenTK.GLControl glControl1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar health1;
+        private System.Windows.Forms.ProgressBar health2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar3;
+        private System.Windows.Forms.ProgressBar fuelRsrf1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ProgressBar progressBar4;
+        private System.Windows.Forms.ProgressBar fuelRsrf2;
+        private System.Windows.Forms.Label healthPlayer1;
+        private System.Windows.Forms.Label healthPlayer2;
+        private System.Windows.Forms.Label fuelPlayer1;
+        private System.Windows.Forms.Label fuelPlayer2;
+        private System.Windows.Forms.Label Player1;
+        private System.Windows.Forms.Label cooldown2;
+        private System.Windows.Forms.Label cooldown1;
     }
 }
 

@@ -117,7 +117,15 @@ namespace WorldOfTanks2
             {
                 if (player1.CheckAmmoCount(weaponFirstPlayer[gunTypeFirstPlayer]))
                 {
-                    scene.AddObject(player1.Fire(weaponFirstPlayer[gunTypeFirstPlayer]));
+                    if (gunTypeFirstPlayer == 0 && player1.trunkColdown == 0)
+                    {
+                        player1.trunkColdown = 3000;
+                        scene.AddObject(player1.Fire(weaponFirstPlayer[gunTypeFirstPlayer]));
+                    }
+                    else if (gunTypeFirstPlayer == 1)
+                    {
+                        scene.AddObject(player1.Fire(weaponFirstPlayer[gunTypeFirstPlayer]));
+                    }
                 }
             }
             lastkeyboardState1 = keyboard1;
@@ -162,7 +170,15 @@ namespace WorldOfTanks2
             {
                 if (player2.CheckAmmoCount(weaponSecondPlayer[gunTypeSecondPlayer]))
                 {
-                    scene.AddObject(player2.Fire(weaponSecondPlayer[gunTypeSecondPlayer]));
+                    if (gunTypeSecondPlayer == 0 && player2.trunkColdown == 0)
+                    {
+                        player2.trunkColdown = 3000;
+                        scene.AddObject(player2.Fire(weaponSecondPlayer[gunTypeSecondPlayer]));
+                    }
+                    else if (gunTypeSecondPlayer == 1)
+                    {
+                        scene.AddObject(player2.Fire(weaponSecondPlayer[gunTypeSecondPlayer]));
+                    }
                 }
             }
             lastkeyboardState2 = keyboard2;

@@ -17,8 +17,8 @@ namespace WorldOfTanks2
         private string direction = "U";
         private float speed = 0.007f;
         public int hp = 100;
-        public int fuelReserve = 1000;
-        public bool destroied = false;
+        public int fuelReserve = 1500;
+        public double trunkColdown = 0;
         
         public Tank(float x, float y, float height, float width, int objectType) : base(x, y, height, width, objectType)
         {

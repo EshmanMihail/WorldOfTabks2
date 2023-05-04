@@ -27,10 +27,10 @@ namespace WorldOfTanks2
             scene = new Scene();
             playersStatistics = new PlayersStatistics(scene);
 
-            progressBar1.Value = 100;
-            progressBar2.Value = 100;
-            progressBar3.Value = 100;
-            progressBar4.Value = 100;
+            health1.Value = 100;
+            health2.Value = 100;
+            fuelRsrf1.Value = 100;
+            fuelRsrf2.Value = 100;
 
             timer1.Interval = 15;
             timer1.Start();
@@ -55,6 +55,7 @@ namespace WorldOfTanks2
             scene.UpdateScene();
             CheckHealthPlayers();
             CheckFuelPlayers();
+            CheckCooldownPlayers(timer1.Interval);
             glControl1.Refresh();
         }
 
@@ -62,19 +63,19 @@ namespace WorldOfTanks2
         {
             if (playersStatistics.CheckFuelPlayer1() <= 0)
             {
-                progressBar3.Value = 0;
+                fuelRsrf1.Value = 0;
             }
             else
             {
-                progressBar3.Value = playersStatistics.CheckFuelPlayer1();
+                fuelRsrf1.Value = playersStatistics.CheckFuelPlayer1();
             }
             if (playersStatistics.CheckFuelPlayer2() <= 0)
             {
-                progressBar4.Value = 0;
+                fuelRsrf2.Value = 0;
             }
             else
             {
-                progressBar4.Value = playersStatistics.CheckFuelPlayer2();
+                fuelRsrf2.Value = playersStatistics.CheckFuelPlayer2();
             }
         }
 
@@ -82,22 +83,30 @@ namespace WorldOfTanks2
         {
             if (playersStatistics.CheckHealthPlayer1() <= 0)
             {
-                progressBar1.Value = 0;
+                health1.Value = 0;
                 timer1.Stop();
             }
             else
             {
-                progressBar1.Value = playersStatistics.CheckHealthPlayer1();
+                health1.Value = playersStatistics.CheckHealthPlayer1();
             }
             if (playersStatistics.CheckHealthPlayer2() <= 0)
             {
-                progressBar2.Value = 0;
+                health2.Value = 0;
                 timer1.Stop();
             }
             else
             {
-                progressBar2.Value = playersStatistics.CheckHealthPlayer2();
+                health2.Value = playersStatistics.CheckHealthPlayer2();
             }
+        }
+
+        private void CheckCooldownPlayers(int timeInterval)
+        {
+            double seconds1 = playersStatistics.TrunkCooldownPlayer1(timeInterval) / 1000;
+            double seconds2 = playersStatistics.TrunkCooldownPlayer2(timeInterval) / 1000;
+            cooldown1.Text = "Перезарядка:" + Math.Round(seconds1, 1).ToString();
+            cooldown2.Text = "Перезарядка:" + Math.Round(seconds2, 1).ToString();
         }
     }
 }

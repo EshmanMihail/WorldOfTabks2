@@ -22,6 +22,18 @@ namespace WorldOfTanks2
         {
             return ((Tank)scene.GetGameObjects()[0]).fuelReserve;
         }
+        public double TrunkCooldownPlayer1(int timeInterval)
+        {
+            if (((Tank)scene.GetGameObjects()[0]).trunkColdown <= 0)
+            {
+                ((Tank)scene.GetGameObjects()[0]).trunkColdown = 0;
+            }
+            else
+            {
+                ((Tank)scene.GetGameObjects()[0]).trunkColdown -= timeInterval;
+            }
+            return ((Tank)scene.GetGameObjects()[0]).trunkColdown;
+        }
 
         public int CheckHealthPlayer2()
         {
@@ -30,6 +42,18 @@ namespace WorldOfTanks2
         public int CheckFuelPlayer2()
         {
             return ((Tank)scene.GetGameObjects()[1]).fuelReserve;
+        }
+        public double TrunkCooldownPlayer2(int timeInterval)
+        {
+            if (((Tank)scene.GetGameObjects()[1]).trunkColdown <= 0)
+            {
+                ((Tank)scene.GetGameObjects()[1]).trunkColdown = 0;
+            }
+            else
+            {
+                ((Tank)scene.GetGameObjects()[1]).trunkColdown -= timeInterval;
+            }
+            return (((Tank)scene.GetGameObjects()[1]).trunkColdown);
         }
     }
 }
