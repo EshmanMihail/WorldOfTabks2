@@ -29,7 +29,7 @@ namespace WorldOfTanks2
             base.Draw();
         }
 
-        private void Move()
+        public void Move()
         {
             switch (direction)
             {

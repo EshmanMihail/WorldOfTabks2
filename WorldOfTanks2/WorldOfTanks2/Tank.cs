@@ -63,16 +63,16 @@ namespace WorldOfTanks2
             switch (direction)
             {
                 case "U":
-                    amo_y += width / 2 + weapon.AmoSize / 2;
+                    amo_y += width / 2;
                     break;
                 case "R":
-                    amo_x += width / 2 + weapon.AmoSize / 2;
+                    amo_x += width / 2;
                     break;
                 case "L":
-                    amo_x -= width / 2 + weapon.AmoSize / 2;
+                    amo_x -= width / 2;
                     break;
                 case "D":
-                    amo_y -= width / 2 + weapon.AmoSize / 2;
+                    amo_y -= width / 2;
                     break;
             }
             weapon.AmmunitionMinusMinus();

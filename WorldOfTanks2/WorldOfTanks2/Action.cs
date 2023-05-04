@@ -55,6 +55,7 @@ namespace WorldOfTanks2
             {
                 if (ammo is Amo)
                 {
+                    if (ammo.Get_Width() != 0.03f )
                     foreach (GameObject obj in scene.GetGameObjects())
                     {
                         if (obj.Get_ObjectType() == 1 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
@@ -77,6 +78,74 @@ namespace WorldOfTanks2
                         {
                             scene.RemoveObject(ammo);
                         }
+                    }
+                    else
+                    {
+                        GameObject hitObj = null;
+                        float minDistance = 10000f;                        
+
+                        foreach (GameObject obj in scene.GetGameObjects())
+                        {
+                            if (obj == ammo) continue;
+                            if (((Amo)ammo).GetAmoDerection() == "L")
+                            {
+                                if (obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y() && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && ammo.Get_X() > obj.Get_X())
+                                {
+                                    if (minDistance > Math.Abs(obj.Get_X() - ammo.Get_X()))
+                                    {
+                                        minDistance = Math.Abs(obj.Get_X() - ammo.Get_X());
+                                        hitObj = obj;
+                                    }
+                                }
+                            }
+                            if (((Amo)ammo).GetAmoDerection() == "R")
+                            {
+                                if (obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y() && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && ammo.Get_X() < obj.Get_X())
+                                {
+                                    if (minDistance > Math.Abs(obj.Get_X() - ammo.Get_X()))
+                                    {
+                                        minDistance = Math.Abs(obj.Get_X() - ammo.Get_X());
+                                        hitObj = obj;
+                                    }
+                                }
+                            }
+                            if (((Amo)ammo).GetAmoDerection() == "U")
+                            {
+                                if (obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X() && obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && ammo.Get_Y() < obj.Get_Y())
+                                {
+                                    if (minDistance > Math.Abs(obj.Get_Y() - ammo.Get_Y()))
+                                    {
+                                        minDistance = Math.Abs(obj.Get_Y() - ammo.Get_Y());
+                                        hitObj = obj;
+                                    }
+                                }
+                            }
+                            if (((Amo)ammo).GetAmoDerection() == "D")
+                            {
+                                if (obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X() && obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && ammo.Get_Y() > obj.Get_Y())
+                                {
+                                    if (minDistance > Math.Abs(obj.Get_Y() - ammo.Get_Y()))
+                                    {
+                                        minDistance = Math.Abs(obj.Get_Y() - ammo.Get_Y());
+                                        hitObj = obj;
+                                    }
+                                }
+                            }
+                                                        
+                        }
+                        if (hitObj is Tank)
+                        {
+                            if (((Tank)hitObj).Get_ObjectType() == 1)
+                            {
+                                player1.hp -= 1;
+                            }
+                            else
+                            {
+                                player2.hp -= 1;
+                            }
+                        }
+
+                        scene.RemoveObject(ammo);
                     }
                 }
             }
