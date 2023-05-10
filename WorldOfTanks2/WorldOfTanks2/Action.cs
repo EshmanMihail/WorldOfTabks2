@@ -55,28 +55,30 @@ namespace WorldOfTanks2
             {
                 if (ammo is Amo)
                 {
-                    if (ammo.Get_Width() != 0.03f )
-                    foreach (GameObject obj in scene.GetGameObjects())
+                    if (ammo.Get_Width() != 0.03f)
                     {
-                        if (obj.Get_ObjectType() == 1 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
-                            obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
-                            && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                        foreach (GameObject obj in scene.GetGameObjects())
                         {
-                            player1.hp -= ((Amo)ammo).Damage;
-                            scene.RemoveObject(ammo);
-                        }
-                        if (obj.Get_ObjectType() == 2 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
-                            obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
-                            && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
-                        {
-                            player2.hp -= ((Amo)ammo).Damage;
-                            scene.RemoveObject(ammo);
-                        }
-                        if (obj.Get_ObjectType() == 4 && obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() &&
-                            obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
-                           && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
-                        {
-                            scene.RemoveObject(ammo);
+                            if (obj.Get_ObjectType() == 1 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
+                                obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
+                                && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                            {
+                                player1.Hp -= ((Amo)ammo).Damage;
+                                scene.RemoveObject(ammo);
+                            }
+                            if (obj.Get_ObjectType() == 2 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
+                                obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
+                                && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                            {
+                                player2.Hp -= ((Amo)ammo).Damage;
+                                scene.RemoveObject(ammo);
+                            }
+                            if (obj.Get_ObjectType() == 4 && obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() &&
+                                obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
+                               && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())
+                            {
+                                scene.RemoveObject(ammo);
+                            }
                         }
                     }
                     else
@@ -137,14 +139,13 @@ namespace WorldOfTanks2
                         {
                             if (((Tank)hitObj).Get_ObjectType() == 1)
                             {
-                                player1.hp -= 1;
+                                player1.Hp -= ((Amo)ammo).Damage;
                             }
                             else
                             {
-                                player2.hp -= 1;
+                                player2.Hp -= ((Amo)ammo).Damage;
                             }
                         }
-
                         scene.RemoveObject(ammo);
                     }
                 }
@@ -186,9 +187,9 @@ namespace WorldOfTanks2
             {
                 if (player1.CheckAmmoCount(weaponFirstPlayer[gunTypeFirstPlayer]))
                 {
-                    if (gunTypeFirstPlayer == 0 && player1.trunkColdown == 0)
+                    if (gunTypeFirstPlayer == 0 && player1.TrunkColdown == 0)
                     {
-                        player1.trunkColdown = 3000;
+                        player1.TrunkColdown = 3000;
                         scene.AddObject(player1.Fire(weaponFirstPlayer[gunTypeFirstPlayer]));
                     }
                     else if (gunTypeFirstPlayer == 1)
@@ -239,9 +240,9 @@ namespace WorldOfTanks2
             {
                 if (player2.CheckAmmoCount(weaponSecondPlayer[gunTypeSecondPlayer]))
                 {
-                    if (gunTypeSecondPlayer == 0 && player2.trunkColdown == 0)
+                    if (gunTypeSecondPlayer == 0 && player2.TrunkColdown == 0)
                     {
-                        player2.trunkColdown = 3000;
+                        player2.TrunkColdown = 3000;
                         scene.AddObject(player2.Fire(weaponSecondPlayer[gunTypeSecondPlayer]));
                     }
                     else if (gunTypeSecondPlayer == 1)

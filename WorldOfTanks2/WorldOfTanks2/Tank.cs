@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WorldOfTanks2
 {
@@ -16,10 +17,31 @@ namespace WorldOfTanks2
     {
         private string direction = "U";
         private float speed = 0.007f;
-        public int hp = 100;
-        public int fuelReserve = 1500;
-        public double trunkColdown = 0;
-        
+        private int hp = 100;
+        private int fuelReserve = 1500;
+        private double trunkColdown = 0;
+        private int[] ammunition = { 12, 100 };
+
+
+        public int Hp
+        {
+            get { return hp; }
+            set { hp = value; }
+        }
+        public int Fuel
+        {
+            get { return fuelReserve; }
+        }
+        public double TrunkColdown 
+        { 
+            get { return trunkColdown; }
+            set { trunkColdown = value; }
+        }
+        public int this[int index]
+        {
+            get { return ammunition[index]; }
+        }
+
         public Tank(float x, float y, float height, float width, int objectType) : base(x, y, height, width, objectType)
         {
             
@@ -75,7 +97,6 @@ namespace WorldOfTanks2
                     amo_y -= width / 2;
                     break;
             }
-            weapon.AmmunitionMinusMinus();
             return new Amo(amo_x, amo_y, weapon.AmoSize, weapon.AmoSize, objectType, weapon.AmoSpeed, weapon.Damage, direction);
         }
 
@@ -84,9 +105,15 @@ namespace WorldOfTanks2
         /// </summary>
         public bool CheckAmmoCount(Weapon weapon)
         {
-            if(weapon.Ammunition() == 0)
+            if (weapon is Trunk && trunkColdown == 0)
             {
-                return false;
+                if (ammunition[0] == 0) return false;
+                ammunition[0]--;
+            }
+            if (weapon is Machinegun)
+            {
+                if (ammunition[1] == 0) return false;
+                ammunition[1]--;
             }
             return true;
         }

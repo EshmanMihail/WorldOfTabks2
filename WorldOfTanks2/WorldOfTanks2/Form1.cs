@@ -27,11 +27,6 @@ namespace WorldOfTanks2
             scene = new Scene();
             playersStatistics = new PlayersStatistics(scene);
 
-            health1.Value = 100;
-            health2.Value = 100;
-            fuelRsrf1.Value = 100;
-            fuelRsrf2.Value = 100;
-
             timer1.Interval = 15;
             timer1.Start();
         }
@@ -56,6 +51,7 @@ namespace WorldOfTanks2
             CheckHealthPlayers();
             CheckFuelPlayers();
             CheckCooldownPlayers(timer1.Interval);
+            CheckAmmunitionPlayers();
             glControl1.Refresh();
         }
 
@@ -63,19 +59,19 @@ namespace WorldOfTanks2
         {
             if (playersStatistics.CheckFuelPlayer1() <= 0)
             {
-                fuelRsrf1.Value = 0;
+                fuelPlayer1.Text = "Запас топлива: 0";
             }
             else
             {
-                fuelRsrf1.Value = playersStatistics.CheckFuelPlayer1();
+                fuelPlayer1.Text = "Запас топлива: " + playersStatistics.CheckFuelPlayer1();
             }
             if (playersStatistics.CheckFuelPlayer2() <= 0)
             {
-                fuelRsrf2.Value = 0;
+                fuelPlayer2.Text = "Запас топлива: 0";
             }
             else
             {
-                fuelRsrf2.Value = playersStatistics.CheckFuelPlayer2();
+                fuelPlayer2.Text = "Запас топлива: " + playersStatistics.CheckFuelPlayer2();
             }
         }
 
@@ -83,22 +79,22 @@ namespace WorldOfTanks2
         {
             if (playersStatistics.CheckHealthPlayer1() <= 0)
             {
-                health1.Value = 0;
+                healthPlayer1.Text = "Здоровье: 0";
                 timer1.Stop();
             }
             else
             {
-                health1.Value = playersStatistics.CheckHealthPlayer1();
+                healthPlayer1.Text = "Здоровье: " + playersStatistics.CheckHealthPlayer1();
             }
             if (playersStatistics.CheckHealthPlayer2() <= 0)
             {
-                health2.Value = 0;
+                healthPlayer2.Text = "Здоровье: 0";
                 timer1.Stop();
             }
             else
             {
-                health2.Value = playersStatistics.CheckHealthPlayer2();
-            }
+                healthPlayer2.Text = "Здоровье: " +  playersStatistics.CheckHealthPlayer2();
+            } 
         }
 
         private void CheckCooldownPlayers(int timeInterval)
@@ -107,6 +103,14 @@ namespace WorldOfTanks2
             double seconds2 = playersStatistics.TrunkCooldownPlayer2(timeInterval) / 1000;
             cooldown1.Text = "Перезарядка:" + Math.Round(seconds1, 1).ToString();
             cooldown2.Text = "Перезарядка:" + Math.Round(seconds2, 1).ToString();
+        }
+
+        private void CheckAmmunitionPlayers()
+        {
+            int[] ammunition_1 = playersStatistics.AmmunitionPlayer1();
+            int[] ammunition_2 = playersStatistics.AmmunitionPlayer2();
+            ammunitionPlayer1.Text = "Боезапас: " + ammunition_1[0].ToString() + " | " + ammunition_1[1].ToString();
+            ammunitionPlayer2.Text = "Боезапас: " + ammunition_2[0].ToString() + " | " + ammunition_2[1].ToString();
         }
     }
 }

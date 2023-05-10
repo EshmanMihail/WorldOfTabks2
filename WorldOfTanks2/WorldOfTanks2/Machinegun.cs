@@ -13,20 +13,10 @@ namespace WorldOfTanks2
     /// </summary>
     public class Machinegun : Weapon
     {
-        public int ammunition = 100;
         public override int Damage => 2;
 
         public override float AmoSize => 0.03f;
 
         public override float AmoSpeed => 0;
-
-        public override int Ammunition()
-        {
-            return ammunition;
-        }
-        public override void AmmunitionMinusMinus()
-        {
-            ammunition--;
-        }
     }
 }

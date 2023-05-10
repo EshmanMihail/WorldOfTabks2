@@ -14,7 +14,5 @@ namespace WorldOfTanks2
         public abstract int Damage { get; }
         public abstract float AmoSpeed { get; }
         public abstract float AmoSize { get; }
-        public abstract int Ammunition();
-        public abstract void AmmunitionMinusMinus();
     }
 }

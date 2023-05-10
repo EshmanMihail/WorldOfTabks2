@@ -16,44 +16,55 @@ namespace WorldOfTanks2
 
         public int CheckHealthPlayer1()
         {
-            return ((Tank)scene.GetGameObjects()[0]).hp;
+            return ((Tank)scene.GetGameObjects()[0]).Hp;
         }
         public int CheckFuelPlayer1()
         {
-            return ((Tank)scene.GetGameObjects()[0]).fuelReserve;
+            return ((Tank)scene.GetGameObjects()[0]).Fuel;
         }
         public double TrunkCooldownPlayer1(int timeInterval)
         {
-            if (((Tank)scene.GetGameObjects()[0]).trunkColdown <= 0)
+            if (((Tank)scene.GetGameObjects()[0]).TrunkColdown <= 0)
             {
-                ((Tank)scene.GetGameObjects()[0]).trunkColdown = 0;
+                ((Tank)scene.GetGameObjects()[0]).TrunkColdown = 0;
             }
             else
             {
-                ((Tank)scene.GetGameObjects()[0]).trunkColdown -= timeInterval;
+                ((Tank)scene.GetGameObjects()[0]).TrunkColdown -= timeInterval;
             }
-            return ((Tank)scene.GetGameObjects()[0]).trunkColdown;
+            return ((Tank)scene.GetGameObjects()[0]).TrunkColdown;
         }
+        public int[] AmmunitionPlayer1()
+        {
+            int[] ammunition = { ((Tank)scene.GetGameObjects()[0])[0], ((Tank)scene.GetGameObjects()[0])[1] };
+            return ammunition;
+        }
+
 
         public int CheckHealthPlayer2()
         {
-            return ((Tank)scene.GetGameObjects()[1]).hp;
+            return ((Tank)scene.GetGameObjects()[1]).Hp;
         }
         public int CheckFuelPlayer2()
         {
-            return ((Tank)scene.GetGameObjects()[1]).fuelReserve;
+            return ((Tank)scene.GetGameObjects()[1]).Fuel;
         }
         public double TrunkCooldownPlayer2(int timeInterval)
         {
-            if (((Tank)scene.GetGameObjects()[1]).trunkColdown <= 0)
+            if (((Tank)scene.GetGameObjects()[1]).TrunkColdown <= 0)
             {
-                ((Tank)scene.GetGameObjects()[1]).trunkColdown = 0;
+                ((Tank)scene.GetGameObjects()[1]).TrunkColdown = 0;
             }
             else
             {
-                ((Tank)scene.GetGameObjects()[1]).trunkColdown -= timeInterval;
+                ((Tank)scene.GetGameObjects()[1]).TrunkColdown -= timeInterval;
             }
-            return (((Tank)scene.GetGameObjects()[1]).trunkColdown);
+            return (((Tank)scene.GetGameObjects()[1]).TrunkColdown);
+        }
+        public int[] AmmunitionPlayer2()
+        {
+            int[] ammunition = { ((Tank)scene.GetGameObjects()[1])[0], ((Tank)scene.GetGameObjects()[1])[1] };
+            return ammunition;
         }
     }
 }
