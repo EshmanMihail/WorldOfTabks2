@@ -57,7 +57,7 @@
             // 
             this.glControl1.AutoScroll = true;
             this.glControl1.BackColor = System.Drawing.Color.Black;
-            this.glControl1.Location = new System.Drawing.Point(13, 13);
+            this.glControl1.Location = new System.Drawing.Point(-1, -1);
             this.glControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.glControl1.Name = "glControl1";
             this.glControl1.Size = new System.Drawing.Size(740, 660);
@@ -77,7 +77,7 @@
             // healthPlayer1
             // 
             this.healthPlayer1.AutoSize = true;
-            this.healthPlayer1.Location = new System.Drawing.Point(23, 643);
+            this.healthPlayer1.Location = new System.Drawing.Point(24, 633);
             this.healthPlayer1.Name = "healthPlayer1";
             this.healthPlayer1.Size = new System.Drawing.Size(71, 16);
             this.healthPlayer1.TabIndex = 7;
@@ -86,7 +86,7 @@
             // fuelPlayer2
             // 
             this.fuelPlayer2.AutoSize = true;
-            this.fuelPlayer2.Location = new System.Drawing.Point(285, 18);
+            this.fuelPlayer2.Location = new System.Drawing.Point(285, 9);
             this.fuelPlayer2.Name = "fuelPlayer2";
             this.fuelPlayer2.Size = new System.Drawing.Size(105, 16);
             this.fuelPlayer2.TabIndex = 9;
@@ -95,7 +95,7 @@
             // fuelPlayer1
             // 
             this.fuelPlayer1.AutoSize = true;
-            this.fuelPlayer1.Location = new System.Drawing.Point(139, 643);
+            this.fuelPlayer1.Location = new System.Drawing.Point(139, 633);
             this.fuelPlayer1.Name = "fuelPlayer1";
             this.fuelPlayer1.Size = new System.Drawing.Size(105, 16);
             this.fuelPlayer1.TabIndex = 10;
@@ -105,7 +105,7 @@
             // 
             this.healthPlayer2.AutoSize = true;
             this.healthPlayer2.BackColor = System.Drawing.Color.White;
-            this.healthPlayer2.Location = new System.Drawing.Point(173, 18);
+            this.healthPlayer2.Location = new System.Drawing.Point(173, 9);
             this.healthPlayer2.Name = "healthPlayer2";
             this.healthPlayer2.Size = new System.Drawing.Size(71, 16);
             this.healthPlayer2.TabIndex = 11;
@@ -114,7 +114,7 @@
             // cooldown1
             // 
             this.cooldown1.AutoSize = true;
-            this.cooldown1.Location = new System.Drawing.Point(305, 643);
+            this.cooldown1.Location = new System.Drawing.Point(305, 633);
             this.cooldown1.Name = "cooldown1";
             this.cooldown1.Size = new System.Drawing.Size(98, 16);
             this.cooldown1.TabIndex = 13;
@@ -123,7 +123,7 @@
             // cooldown2
             // 
             this.cooldown2.AutoSize = true;
-            this.cooldown2.Location = new System.Drawing.Point(449, 18);
+            this.cooldown2.Location = new System.Drawing.Point(449, 9);
             this.cooldown2.Name = "cooldown2";
             this.cooldown2.Size = new System.Drawing.Size(98, 16);
             this.cooldown2.TabIndex = 14;
@@ -132,24 +132,26 @@
             // ammunitionPlayer1
             // 
             this.ammunitionPlayer1.AutoSize = true;
-            this.ammunitionPlayer1.Location = new System.Drawing.Point(449, 643);
+            this.ammunitionPlayer1.Location = new System.Drawing.Point(449, 633);
             this.ammunitionPlayer1.Name = "ammunitionPlayer1";
-            this.ammunitionPlayer1.Size = new System.Drawing.Size(0, 16);
+            this.ammunitionPlayer1.Size = new System.Drawing.Size(74, 16);
             this.ammunitionPlayer1.TabIndex = 15;
+            this.ammunitionPlayer1.Text = "Боезапас:";
             // 
             // ammunitionPlayer2
             // 
             this.ammunitionPlayer2.AutoSize = true;
-            this.ammunitionPlayer2.Location = new System.Drawing.Point(590, 18);
+            this.ammunitionPlayer2.Location = new System.Drawing.Point(587, 9);
             this.ammunitionPlayer2.Name = "ammunitionPlayer2";
-            this.ammunitionPlayer2.Size = new System.Drawing.Size(0, 16);
+            this.ammunitionPlayer2.Size = new System.Drawing.Size(74, 16);
             this.ammunitionPlayer2.TabIndex = 16;
+            this.ammunitionPlayer2.Text = "Боезапас:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 683);
+            this.ClientSize = new System.Drawing.Size(737, 658);
             this.Controls.Add(this.ammunitionPlayer2);
             this.Controls.Add(this.ammunitionPlayer1);
             this.Controls.Add(this.cooldown2);

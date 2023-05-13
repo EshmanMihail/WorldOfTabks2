@@ -16,12 +16,15 @@ namespace WorldOfTanks2
     public class Tank : GameObject // 1, 2
     {
         private string direction = "U";
-        private float speed = 0.007f;
+        private float speed = 0.006f;
+
+        private int gunType = 0;
+        private Weapon[] weapons = { new Trunk(), new Machinegun() };
+
         private int hp = 100;
-        private int fuelReserve = 1500;
+        private int fuelReserve = 1600;
         private double trunkColdown = 0;
         private int[] ammunition = { 12, 100 };
-
 
         public int Hp
         {
@@ -36,6 +39,10 @@ namespace WorldOfTanks2
         { 
             get { return trunkColdown; }
             set { trunkColdown = value; }
+        }
+        public int GunType
+        {
+            get { return gunType; }
         }
         public int this[int index]
         {
@@ -79,43 +86,57 @@ namespace WorldOfTanks2
         /// <summary>
         /// Стреляет из выбранного орудия.
         /// </summary>
-        public GameObject Fire(Weapon weapon)
+        public GameObject Fire()
         {
             float amo_x = x, amo_y = y;
             switch (direction)
             {
                 case "U":
-                    amo_y += width / 2;
+                    amo_y += width / 2 + weapons[gunType].AmoSize / 2;
                     break;
                 case "R":
-                    amo_x += width / 2;
+                    amo_x += width / 2 + weapons[gunType].AmoSize / 2;
                     break;
                 case "L":
-                    amo_x -= width / 2;
+                    amo_x -= width / 2 + weapons[gunType].AmoSize / 2;
                     break;
                 case "D":
-                    amo_y -= width / 2;
+                    amo_y -= width / 2 + weapons[gunType].AmoSize / 2;
                     break;
             }
-            return new Amo(amo_x, amo_y, weapon.AmoSize, weapon.AmoSize, objectType, weapon.AmoSpeed, weapon.Damage, direction);
+            return new Amo(amo_x, amo_y, weapons[gunType].AmoSize, weapons[gunType].AmoSize, objectType, weapons[gunType].AmoSpeed, weapons[gunType].Damage, direction);
         }
 
         /// <summary>
         /// Проверяет боезапас орудия.
         /// </summary>
-        public bool CheckAmmoCount(Weapon weapon)
+        public bool CheckAmmoCount()
         {
-            if (weapon is Trunk && trunkColdown == 0)
+            if (weapons[gunType] is Trunk && trunkColdown == 0)
             {
                 if (ammunition[0] == 0) return false;
                 ammunition[0]--;
             }
-            if (weapon is Machinegun)
+            if (weapons[gunType] is Machinegun)
             {
                 if (ammunition[1] == 0) return false;
                 ammunition[1]--;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Меняет орудие танка.
+        /// </summary>
+        public void ChangeGun()
+        {
+            if (gunType == 0) gunType = 1;
+            else gunType = 0;
+        }
+
+        public float TankSpeed()
+        {
+            return speed;
         }
     }
 }

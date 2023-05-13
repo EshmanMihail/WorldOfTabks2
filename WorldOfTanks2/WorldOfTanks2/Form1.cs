@@ -40,6 +40,7 @@ namespace WorldOfTanks2
         {
             
         }
+
         private void glControl1_Paint(object sender, PaintEventArgs e)
         {
             glControl1.SwapBuffers();

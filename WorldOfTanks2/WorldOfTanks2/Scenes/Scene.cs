@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Input;
 using System.Windows.Forms;
+using WorldOfTanks2.Debuffs;
 
 namespace WorldOfTanks2
 {
@@ -20,11 +21,15 @@ namespace WorldOfTanks2
 
         private List<GameObject> objectsToAdd;
 
-        Action action;
+        private List<DebuffObject> objectsDebuff;
 
-        Maze maze;
+        private SceneIvents sceneIvents;
 
-        PlayersStatistics statistics;
+        private Action action;
+
+        private Maze maze;
+
+        private PlayersStatistics statistics;
 
         /// <summary>
         /// Создание сцены.
@@ -34,9 +39,13 @@ namespace WorldOfTanks2
             objects = new List<GameObject>();
             objectsToRemove = new List<GameObject>();
             objectsToAdd = new List<GameObject>();
+            objectsDebuff = new List<DebuffObject>();
+
             action = new Action(this);
+            sceneIvents = new SceneIvents(this);
             maze = new Maze(this);
             statistics = new PlayersStatistics(this);
+
             SpawnPlayers();
             SpawnWallsAndBarriers();
         }
@@ -53,6 +62,8 @@ namespace WorldOfTanks2
 
             UpdateObjectsArray();
 
+            sceneIvents.ChangePositionOfDebuffs();
+
             DrawObjects();
         }
 
@@ -62,6 +73,10 @@ namespace WorldOfTanks2
         private void DrawObjects()
         {
             foreach (GameObject obj in objects)
+            {
+                obj.Draw();
+            }
+            foreach (DebuffObject obj in objectsDebuff)
             {
                 obj.Draw();
             }
@@ -105,6 +120,16 @@ namespace WorldOfTanks2
             objectsToAdd.Add(gameObject);
         }
 
+        public void AddDebuffObject(DebuffObject debuffObject)
+        {
+            objectsDebuff.Add(debuffObject);
+        }
+
+        public List<DebuffObject> GetDebuffs()
+        {
+            return objectsDebuff;
+        }
+
         /// <summary>
         /// Метод удаления объекта со сцены.
         /// </summary>
@@ -116,7 +141,7 @@ namespace WorldOfTanks2
         /// <summary>
         /// Метод, добавляющий игроков на сцену.
         /// </summary>
-        public void SpawnPlayers()
+        private void SpawnPlayers()
         {
             objectsToAdd.Add(new Tank(0, -0.5f, 0.1f, 0.1f, 1));
             objectsToAdd.Add(new Tank(0, 0.5f, 0.1f, 0.1f, 2));
@@ -125,11 +150,10 @@ namespace WorldOfTanks2
         /// <summary>
         /// Метод, добовляющий стены и барьеры на сцену.
         /// </summary>
-        public void SpawnWallsAndBarriers()
+        private void SpawnWallsAndBarriers()
         {
             maze.CreateWalls();
             maze.CreateBarries();
         }
-
     }
 }
