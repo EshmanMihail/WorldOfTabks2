@@ -4,17 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WorldOfTanks2.Debuffs;
+using WorldOfTanks2.InteractionWithGameScene;
 
 namespace WorldOfTanks2
 {
     public class Collider
     {
+        /// <summary>
+        /// Игровая сцена.
+        /// </summary>
         private Scene scene;
         public Collider(Scene scene)
         {
             this.scene = scene; 
         }
-
+        /// <summary>
+        /// Проверяет коллизию с объектами.
+        /// </summary>
         public bool CheckCollision(float x, float y, Tank player)
         {
             foreach (GameObject obj in scene.GetGameObjects())
@@ -40,6 +46,9 @@ namespace WorldOfTanks2
             }
             return false;
         }
+        /// <summary>
+        /// Проверка коллизии для пуль.
+        /// </summary>
         public bool CheckCollisionWithAmmo(Tank player1, Tank player2)
         {
             foreach (GameObject ammo in scene.GetGameObjects())
@@ -50,6 +59,8 @@ namespace WorldOfTanks2
                     {
                         foreach (GameObject obj in scene.GetGameObjects())
                         {
+                            if (obj is Amo) continue;
+
                             if (obj.Get_ObjectType() == 1 && obj.Get_ObjectType() != ammo.Get_ObjectType() &&
                                 obj.Get_X() - obj.Get_Width() / 2 <= ammo.Get_X() && obj.Get_X() + obj.Get_Width() / 2 >= ammo.Get_X()
                                 && obj.Get_Y() - obj.Get_Width() / 2 <= ammo.Get_Y() && obj.Get_Y() + obj.Get_Width() / 2 >= ammo.Get_Y())

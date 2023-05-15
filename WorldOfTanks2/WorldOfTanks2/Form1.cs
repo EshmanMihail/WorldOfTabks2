@@ -17,16 +17,20 @@ namespace WorldOfTanks2
 {
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Игровая сцена.
+        /// </summary>
         Scene scene;
 
+        /// <summary>
+        /// Отслеживание характеристик танков.
+        /// </summary>
         PlayersStatistics playersStatistics;
+
         public Form1()
         {
             InitializeComponent();
             CenterToScreen();
-            scene = new Scene();
-            playersStatistics = new PlayersStatistics(scene);
-
             timer1.Interval = 15;
             timer1.Start();
         }
@@ -38,7 +42,12 @@ namespace WorldOfTanks2
 
         private void glControl1_Load(object sender, EventArgs e)
         {
-            
+            GL.Enable(EnableCap.Texture2D);
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
+            scene = new Scene();
+            playersStatistics = new PlayersStatistics(scene);
         }
 
         private void glControl1_Paint(object sender, PaintEventArgs e)
@@ -51,11 +60,14 @@ namespace WorldOfTanks2
             scene.UpdateScene();
             CheckHealthPlayers();
             CheckFuelPlayers();
-            CheckCooldownPlayers(timer1.Interval);
+            CheckCooldownPlayers();
             CheckAmmunitionPlayers();
             glControl1.Refresh();
         }
 
+        /// <summary>
+        /// Метод, который выводит информацию о топливе игроков.
+        /// </summary>
         private void CheckFuelPlayers()
         {
             if (playersStatistics.CheckFuelPlayer1() <= 0)
@@ -76,12 +88,16 @@ namespace WorldOfTanks2
             }
         }
 
+        /// <summary>
+        /// Метод, который выводит информацию о броне игроков.
+        /// </summary>
         private void CheckHealthPlayers()
         {
             if (playersStatistics.CheckHealthPlayer1() <= 0)
             {
                 healthPlayer1.Text = "Здоровье: 0";
                 timer1.Stop();
+                MessageBox.Show("Игрок 2 победил!");
             }
             else
             {
@@ -91,6 +107,7 @@ namespace WorldOfTanks2
             {
                 healthPlayer2.Text = "Здоровье: 0";
                 timer1.Stop();
+                MessageBox.Show("Игрок 1 победил!");
             }
             else
             {
@@ -98,14 +115,20 @@ namespace WorldOfTanks2
             } 
         }
 
-        private void CheckCooldownPlayers(int timeInterval)
+        /// <summary>
+        /// Метод, который выводит информацию о перезарядке игроков.
+        /// </summary>
+        private void CheckCooldownPlayers()
         {
-            double seconds1 = playersStatistics.TrunkCooldownPlayer1(timeInterval) / 1000;
-            double seconds2 = playersStatistics.TrunkCooldownPlayer2(timeInterval) / 1000;
+            double seconds1 = playersStatistics.ReturnColdown1() / 1000;
+            double seconds2 = playersStatistics.ReturnColdown2() / 1000;
             cooldown1.Text = "Перезарядка:" + Math.Round(seconds1, 1).ToString();
             cooldown2.Text = "Перезарядка:" + Math.Round(seconds2, 1).ToString();
         }
 
+        /// <summary>
+        /// Метод, который выводит информацию о запасе патрон игроков.
+        /// </summary>
         private void CheckAmmunitionPlayers()
         {
             int[] ammunition_1 = playersStatistics.AmmunitionPlayer1();

@@ -7,6 +7,8 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using System.Drawing;
+using WorldOfTanks2.InteractionWithGameScene;
+using coursework;
 
 namespace WorldOfTanks2
 {
@@ -21,6 +23,14 @@ namespace WorldOfTanks2
         protected float width;
         protected int objectType;
 
+        /// <summary>
+        /// Текстура объекта.
+        /// </summary>
+        protected Textures texture;
+
+        /// <summary>
+        /// Создание игрового объекта.
+        /// </summary>
         public GameObject(float x, float y, float height, float width, int objectType)
         {
             this.x = x;
@@ -29,7 +39,11 @@ namespace WorldOfTanks2
             this.width = width;
             this.objectType = objectType;
         }
+        public GameObject() { }
         
+        /// <summary>
+        /// Метод, отвечающий за отрисовку объкта на игровой сцене.
+        /// </summary>
         public virtual void Draw()
         {
             float xLeft, xRight, yUpper, yLower;
@@ -39,32 +53,46 @@ namespace WorldOfTanks2
             yUpper = y + (float)height / 2;
             yLower = y - (float)height / 2;
 
+            GL.BindTexture(TextureTarget.Texture2D, texture.Id);
             GL.Begin(PrimitiveType.Quads);
 
-            GL.Vertex2(xLeft, yLower);
-            GL.Vertex2(xRight, yLower);
-            GL.Vertex2(xRight, yUpper);
+            GL.TexCoord2(0, 0);
             GL.Vertex2(xLeft, yUpper);
+            GL.TexCoord2(1, 0);
+            GL.Vertex2(xRight, yUpper);
+            GL.TexCoord2(1, 1);
+            GL.Vertex2(xRight, yLower);
+            GL.TexCoord2(0, 1);
+            GL.Vertex2(xLeft, yLower);
 
             GL.End();
         }
 
-        public float Get_X()
+        /// <summary>
+        /// Возвращает Х координату объетка.
+        /// </summary>
+        public virtual float Get_X()
         {
             return x;
         }
-
-        public float Get_Y()
+        /// <summary>
+        /// Возвращает Y координату объетка.
+        /// </summary>
+        public virtual float Get_Y()
         {
             return y;
         }
-
-        public float Get_Width()
+        /// <summary>
+        /// Возвращает ширину объетка.
+        /// </summary>
+        public virtual float Get_Width()
         {
             return width;
         }
-
-        public int Get_ObjectType()
+        /// <summary>
+        /// Возвращает тип объетка.
+        /// </summary>
+        public virtual int Get_ObjectType()
         {
             return objectType;
         }

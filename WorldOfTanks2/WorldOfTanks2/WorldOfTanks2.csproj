@@ -58,6 +58,13 @@
     <Compile Include="InteractionWithGameScene\Collider.cs" />
     <Compile Include="Debuffs\DebuffObject.cs" />
     <Compile Include="Debuffs\Mud.cs" />
+    <Compile Include="InteractionWithGameScene\NotShootingTank.cs" />
+    <Compile Include="InteractionWithGameScene\SceneChanger.cs" />
+    <Compile Include="InteractionWithGameScene\SlowedTank.cs" />
+    <Compile Include="InteractionWithGameScene\Tank.cs" />
+    <Compile Include="InteractionWithGameScene\TankDecorator.cs" />
+    <Compile Include="InteractionWithGameScene\Textures.cs" />
+    <Compile Include="Scenes\ObjectsTextures.cs" />
     <Compile Include="Weapons\Machinegun.cs" />
     <Compile Include="Debuffs\Mist.cs" />
     <Compile Include="InteractionWithGameScene\PlayersStatistics.cs" />
@@ -65,7 +72,7 @@
     <Compile Include="Weapons\Trunk.cs" />
     <Compile Include="GameObjects\Wall.cs" />
     <Compile Include="Mazes\Maze.cs" />
-    <Compile Include="GameObjects\Tank.cs" />
+    <Compile Include="GameObjects\BaseTank.cs" />
     <Compile Include="Scenes\Scene.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="Form1.cs">

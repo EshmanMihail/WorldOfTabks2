@@ -10,26 +10,48 @@ using System.Threading.Tasks;
 using OpenTK.Input;
 using System.Windows.Forms;
 using WorldOfTanks2.Debuffs;
+using WorldOfTanks2.InteractionWithGameScene;
 
 namespace WorldOfTanks2
 {
     public class Scene
-    {   
+    {
+        /// <summary>
+        /// Список объектов на сцене.
+        /// </summary>
         private List<GameObject> objects;
 
+        /// <summary>
+        /// Временный массив с объектами, который нужен
+        /// для возможности удаления объектов со сцены.
+        /// </summary>
         private List<GameObject> objectsToRemove;
 
+        /// <summary>
+        /// Временный массив с объектами, который нужен
+        /// для возможности добавления объектов на сцену.
+        /// </summary>
         private List<GameObject> objectsToAdd;
 
+        /// <summary>
+        /// Список дебафов на сцене.
+        /// </summary>
         private List<DebuffObject> objectsDebuff;
 
+        /// <summary>
+        /// Класс, который отвечает за свершение событий на сцене.
+        /// </summary>
         private SceneIvents sceneIvents;
 
+        /// <summary>
+        /// Класс, который отвечает за дейсвия игроков на сцене.
+        /// </summary>
         private Action action;
 
+        /// <summary>
+        /// Лабиринт, который отвечает за расположение на сцене.
+        /// </summary>
         private Maze maze;
-
-        private PlayersStatistics statistics;
 
         /// <summary>
         /// Создание сцены.
@@ -44,7 +66,6 @@ namespace WorldOfTanks2
             action = new Action(this);
             sceneIvents = new SceneIvents(this);
             maze = new Maze(this);
-            statistics = new PlayersStatistics(this);
 
             SpawnPlayers();
             SpawnWallsAndBarriers();
@@ -57,9 +78,12 @@ namespace WorldOfTanks2
         {
             GL.ClearColor(0.3f, 0.5f, 0.3f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
-
-            if (objects.Count != 0) action.CheckAction((Tank)objects[0], (Tank)objects[1]);
-
+            
+            if (objects.Count != 0)
+            {
+                action.CheckAction((Tank)objects[0], (Tank)objects[1]);
+            }
+            
             UpdateObjectsArray();
 
             sceneIvents.ChangePositionOfDebuffs();
@@ -72,11 +96,29 @@ namespace WorldOfTanks2
         /// </summary>
         private void DrawObjects()
         {
+            List<GameObject> players = new List<GameObject>();
+            players.Add(objects[0]);
+            players.Add(objects[1]);
             foreach (GameObject obj in objects)
             {
                 obj.Draw();
             }
+            List<DebuffObject> mud = new List<DebuffObject>();
+            List<DebuffObject> mist = new List<DebuffObject>();
             foreach (DebuffObject obj in objectsDebuff)
+            {
+                if (obj is Mud) mud.Add(obj);
+                if (obj is Mist) mist.Add(obj);
+            }
+            foreach (DebuffObject obj in mud)
+            {
+                obj.Draw();
+            }
+            foreach (GameObject obj in players)
+            {
+                obj.Draw();
+            }
+            foreach (DebuffObject obj in mist)
             {
                 obj.Draw();
             }
@@ -99,7 +141,6 @@ namespace WorldOfTanks2
             {
                 objects.AddRange(objectsToAdd);
                 objectsToAdd.Clear();
-                //MessageBox.Show(objects.Count.ToString());
             }
         }
 
@@ -120,11 +161,17 @@ namespace WorldOfTanks2
             objectsToAdd.Add(gameObject);
         }
 
+        /// <summary>
+        /// Метод, добавляющий объект, который носит отрицательный эффект.
+        /// </summary>
         public void AddDebuffObject(DebuffObject debuffObject)
         {
             objectsDebuff.Add(debuffObject);
         }
 
+        /// <summary>
+        /// Получение списка всех объектов, которые носят отрицательные эффекты.
+        /// </summary>
         public List<DebuffObject> GetDebuffs()
         {
             return objectsDebuff;
@@ -143,8 +190,10 @@ namespace WorldOfTanks2
         /// </summary>
         private void SpawnPlayers()
         {
-            objectsToAdd.Add(new Tank(0, -0.5f, 0.1f, 0.1f, 1));
-            objectsToAdd.Add(new Tank(0, 0.5f, 0.1f, 0.1f, 2));
+            Tank firstPlayer = new BaseTank(0, -0.5f, 0.1f, 0.1f, 100, "U", 4000, 0, 12, 100, 0, 1);
+            Tank secondPlayer = new BaseTank(0, 0.5f, 0.1f, 0.1f, 100, "D", 4000, 0, 12, 100, 0, 2);
+            objectsToAdd.Add(firstPlayer);
+            objectsToAdd.Add(secondPlayer);
         }
 
         /// <summary>

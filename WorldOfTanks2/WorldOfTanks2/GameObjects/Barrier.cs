@@ -1,4 +1,5 @@
-﻿using OpenTK.Graphics.OpenGL;
+﻿using coursework;
+using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace WorldOfTanks2
     {
         public Barrier(float x, float y, float height, float width, int objectType) : base(x, y, width, height, objectType)
         {
-
+            texture = Textures.LoadTexture(@"C:\Users\Asus\source\repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\Textures\barrier.png");
         }
         public override void Draw()
         {

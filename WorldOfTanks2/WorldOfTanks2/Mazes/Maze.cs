@@ -12,6 +12,9 @@ namespace WorldOfTanks2
 {
     public class Maze
     {
+        /// <summary>
+        /// Игровая сцена.
+        /// </summary>
         Scene scene;
         public Maze(Scene scene)
         {

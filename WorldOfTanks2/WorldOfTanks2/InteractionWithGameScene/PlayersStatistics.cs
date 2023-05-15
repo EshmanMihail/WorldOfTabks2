@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using WorldOfTanks2.InteractionWithGameScene;
 
 namespace WorldOfTanks2
 {
@@ -22,23 +24,15 @@ namespace WorldOfTanks2
         {
             return ((Tank)scene.GetGameObjects()[0]).Fuel;
         }
-        public double TrunkCooldownPlayer1(int timeInterval)
-        {
-            if (((Tank)scene.GetGameObjects()[0]).TrunkColdown <= 0)
-            {
-                ((Tank)scene.GetGameObjects()[0]).TrunkColdown = 0;
-            }
-            else
-            {
-                ((Tank)scene.GetGameObjects()[0]).TrunkColdown -= timeInterval;
-            }
-            return ((Tank)scene.GetGameObjects()[0]).TrunkColdown;
-        }
         public int[] AmmunitionPlayer1()
         {
-            int[] ammunition = { ((Tank)scene.GetGameObjects()[0])[0], ((Tank)scene.GetGameObjects()[0])[1] };
+            int[] ammunition = { ((Tank)scene.GetGameObjects()[0]).TrunkAmmunition, ((Tank)scene.GetGameObjects()[0]).MachinegunAmmunition };
             return ammunition;
         }
+        public double ReturnColdown1()
+        {
+            return ((Tank)scene.GetGameObjects()[0]).CheckTrunkColdown();
+        } 
 
 
         public int CheckHealthPlayer2()
@@ -49,22 +43,14 @@ namespace WorldOfTanks2
         {
             return ((Tank)scene.GetGameObjects()[1]).Fuel;
         }
-        public double TrunkCooldownPlayer2(int timeInterval)
-        {
-            if (((Tank)scene.GetGameObjects()[1]).TrunkColdown <= 0)
-            {
-                ((Tank)scene.GetGameObjects()[1]).TrunkColdown = 0;
-            }
-            else
-            {
-                ((Tank)scene.GetGameObjects()[1]).TrunkColdown -= timeInterval;
-            }
-            return (((Tank)scene.GetGameObjects()[1]).TrunkColdown);
-        }
         public int[] AmmunitionPlayer2()
         {
-            int[] ammunition = { ((Tank)scene.GetGameObjects()[1])[0], ((Tank)scene.GetGameObjects()[1])[1] };
+            int[] ammunition = { ((Tank)scene.GetGameObjects()[1]).TrunkAmmunition, ((Tank)scene.GetGameObjects()[1]).MachinegunAmmunition };
             return ammunition;
+        }
+        public double ReturnColdown2()
+        {
+            return ((Tank)scene.GetGameObjects()[1]).CheckTrunkColdown();
         }
     }
 }
