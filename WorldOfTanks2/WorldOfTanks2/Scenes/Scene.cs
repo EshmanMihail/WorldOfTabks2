@@ -14,6 +14,9 @@ using WorldOfTanks2.InteractionWithGameScene;
 
 namespace WorldOfTanks2
 {
+    /// <summary>
+    /// Класс, описывающий игровое поле.
+    /// </summary>
     public class Scene
     {
         /// <summary>
@@ -41,12 +44,12 @@ namespace WorldOfTanks2
         /// <summary>
         /// Класс, который отвечает за свершение событий на сцене.
         /// </summary>
-        private SceneIvents sceneIvents;
+        private SceneEvents sceneIvents;
 
         /// <summary>
         /// Класс, который отвечает за дейсвия игроков на сцене.
         /// </summary>
-        private Action action;
+        private EventCheker action;
 
         /// <summary>
         /// Лабиринт, который отвечает за расположение на сцене.
@@ -63,8 +66,8 @@ namespace WorldOfTanks2
             objectsToAdd = new List<GameObject>();
             objectsDebuff = new List<DebuffObject>();
 
-            action = new Action(this);
-            sceneIvents = new SceneIvents(this);
+            action = new EventCheker(this);
+            sceneIvents = new SceneEvents(this);
             maze = new Maze(this);
 
             SpawnPlayers();
@@ -81,7 +84,7 @@ namespace WorldOfTanks2
             
             if (objects.Count != 0)
             {
-                action.CheckAction((Tank)objects[0], (Tank)objects[1]);
+                action.EventChecking((Tank)objects[0], (Tank)objects[1]);
             }
             
             UpdateObjectsArray();
@@ -99,10 +102,6 @@ namespace WorldOfTanks2
             List<GameObject> players = new List<GameObject>();
             players.Add(objects[0]);
             players.Add(objects[1]);
-            foreach (GameObject obj in objects)
-            {
-                obj.Draw();
-            }
             List<DebuffObject> mud = new List<DebuffObject>();
             List<DebuffObject> mist = new List<DebuffObject>();
             foreach (DebuffObject obj in objectsDebuff)
@@ -115,6 +114,10 @@ namespace WorldOfTanks2
                 obj.Draw();
             }
             foreach (GameObject obj in players)
+            {
+                obj.Draw();
+            }
+            foreach (GameObject obj in objects)
             {
                 obj.Draw();
             }
@@ -190,8 +193,8 @@ namespace WorldOfTanks2
         /// </summary>
         private void SpawnPlayers()
         {
-            Tank firstPlayer = new BaseTank(0, -0.5f, 0.1f, 0.1f, 100, "U", 4000, 0, 12, 100, 0, 1);
-            Tank secondPlayer = new BaseTank(0, 0.5f, 0.1f, 0.1f, 100, "D", 4000, 0, 12, 100, 0, 2);
+            Tank firstPlayer = new BaseTank(0, -0.5f, 0.1f, 0.1f, 100, "U", 10000, 0, 25, 150, 0, 1);
+            Tank secondPlayer = new BaseTank(0, 0.5f, 0.1f, 0.1f, 100, "D", 10000, 0, 25, 150, 0, 2);
             objectsToAdd.Add(firstPlayer);
             objectsToAdd.Add(secondPlayer);
         }

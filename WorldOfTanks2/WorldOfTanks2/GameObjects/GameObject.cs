@@ -9,6 +9,7 @@ using OpenTK.Graphics.OpenGL;
 using System.Drawing;
 using WorldOfTanks2.InteractionWithGameScene;
 using coursework;
+using WorldOfTanks2.Scenes;
 
 namespace WorldOfTanks2
 {
@@ -26,7 +27,9 @@ namespace WorldOfTanks2
         /// <summary>
         /// Текстура объекта.
         /// </summary>
-        protected Textures texture;
+        protected Textures2D texture;
+
+        protected TexturesDistributor texturesInstaller = new TexturesDistributor();
 
         /// <summary>
         /// Создание игрового объекта.

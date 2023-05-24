@@ -12,7 +12,7 @@ namespace coursework
     /// <summary>
     /// Класс, который описывает двухмерную текстуру.
     /// </summary>
-    public class Textures
+    public class Textures2D
     {
         /// <summary>
         /// Идентификатор текстуры.
@@ -34,7 +34,7 @@ namespace coursework
         /// <summary>
         /// Создание новой текстуры.
         /// </summary>
-        public Textures(int id, int width, int height)
+        public Textures2D(int id, int width, int height)
         {
             Id = id;
             Width = width;
@@ -47,7 +47,7 @@ namespace coursework
         /// </summary>
         /// <param name="path">Путь к файлу.</param>
         /// <returns>Загруженная текстура.</returns>
-        public static Textures LoadTexture(string path)
+        public static Textures2D LoadTexture(string path)
         {
             int id = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, id);
@@ -79,7 +79,7 @@ namespace coursework
                 TextureParameterName.TextureMagFilter,
                 (int)TextureMagFilter.Nearest);
 
-            return new Textures(id, bitmap.Width, bitmap.Height);
+            return new Textures2D(id, bitmap.Width, bitmap.Height);
         }
 
     }

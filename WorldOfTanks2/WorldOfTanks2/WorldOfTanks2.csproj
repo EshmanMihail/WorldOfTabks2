@@ -53,22 +53,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\Amo.cs" />
-    <Compile Include="InteractionWithGameScene\Action.cs" />
+    <Compile Include="InteractionWithGameScene\EventCheker.cs" />
     <Compile Include="GameObjects\Barrier.cs" />
-    <Compile Include="InteractionWithGameScene\Collider.cs" />
+    <Compile Include="InteractionWithGameScene\CollisionDetector.cs" />
     <Compile Include="Debuffs\DebuffObject.cs" />
     <Compile Include="Debuffs\Mud.cs" />
     <Compile Include="InteractionWithGameScene\NotShootingTank.cs" />
-    <Compile Include="InteractionWithGameScene\SceneChanger.cs" />
     <Compile Include="InteractionWithGameScene\SlowedTank.cs" />
     <Compile Include="InteractionWithGameScene\Tank.cs" />
     <Compile Include="InteractionWithGameScene\TankDecorator.cs" />
     <Compile Include="InteractionWithGameScene\Textures.cs" />
-    <Compile Include="Scenes\ObjectsTextures.cs" />
+    <Compile Include="Scenes\TexturesDistributor.cs" />
     <Compile Include="Weapons\Machinegun.cs" />
     <Compile Include="Debuffs\Mist.cs" />
     <Compile Include="InteractionWithGameScene\PlayersStatistics.cs" />
-    <Compile Include="InteractionWithGameScene\SceneIvents.cs" />
+    <Compile Include="InteractionWithGameScene\SceneEvents.cs" />
     <Compile Include="Weapons\Trunk.cs" />
     <Compile Include="GameObjects\Wall.cs" />
     <Compile Include="Mazes\Maze.cs" />
@@ -96,6 +95,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -107,6 +107,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Scenes\ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -23,7 +23,7 @@ namespace WorldOfTanks2
             this.speedOfAmo = speedOfAmo;
             Damage = damage;
             this.direction = direction;
-            texture = Textures.LoadTexture(@"C:\Users\Asus\source\repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\Textures\ammo.png");
+            texture = Textures2D.LoadTexture(texturesInstaller.SetTexture(3));
         }
 
         /// <summary>
@@ -124,6 +124,9 @@ namespace WorldOfTanks2
             }
         }
 
+        /// <summary>
+        /// </summary>
+        /// <returns>Направлени полёта пули.</returns>
         public string GetAmoDerection()
         {
             return direction;

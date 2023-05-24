@@ -32,7 +32,6 @@ namespace WorldOfTanks2
         private int trunkAmmunition;
         private int machinegunAmmunition;
 
-        ObjectsTextures objectsTextures = new ObjectsTextures();
         /// <summary>
         /// Направление стовола танка.
         /// </summary>
@@ -114,7 +113,7 @@ namespace WorldOfTanks2
             this.trunkAmmunition = trunkAmmunition;
             this.machinegunAmmunition = machinegunAmmunition;
             this.gunType = gunType;
-            texture = Textures.LoadTexture(objectsTextures.SetTexture(objectType));
+            texture = Textures2D.LoadTexture(texturesInstaller.SetTexture(objectType));
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ using OpenTK.Platform;
 
 namespace WorldOfTanks2
 {
-    public partial class Form1 : Form
+    public partial class WorldOfTanks2 : Form
     {
         /// <summary>
         /// Игровая сцена.
@@ -27,7 +27,7 @@ namespace WorldOfTanks2
         /// </summary>
         PlayersStatistics playersStatistics;
 
-        public Form1()
+        public WorldOfTanks2()
         {
             InitializeComponent();
             CenterToScreen();
@@ -45,7 +45,6 @@ namespace WorldOfTanks2
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-
             scene = new Scene();
             playersStatistics = new PlayersStatistics(scene);
         }
@@ -54,6 +53,7 @@ namespace WorldOfTanks2
         {
             glControl1.SwapBuffers();
         }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -95,23 +95,24 @@ namespace WorldOfTanks2
         {
             if (playersStatistics.CheckHealthPlayer1() <= 0)
             {
-                healthPlayer1.Text = "Здоровье: 0";
+                healthPlayer1.Text = "Броня: 0";
                 timer1.Stop();
-                MessageBox.Show("Игрок 2 победил!");
+                MessageBox.Show("Игрок 2 победил!", "Результат игры.");
+                
             }
             else
             {
-                healthPlayer1.Text = "Здоровье: " + playersStatistics.CheckHealthPlayer1();
+                healthPlayer1.Text = "Броня: " + playersStatistics.CheckHealthPlayer1();
             }
             if (playersStatistics.CheckHealthPlayer2() <= 0)
             {
-                healthPlayer2.Text = "Здоровье: 0";
+                healthPlayer2.Text = "Броня: 0";
                 timer1.Stop();
-                MessageBox.Show("Игрок 1 победил!");
+                MessageBox.Show("Игрок 1 победил!", "Результат игры.");
             }
             else
             {
-                healthPlayer2.Text = "Здоровье: " +  playersStatistics.CheckHealthPlayer2();
+                healthPlayer2.Text = "Броня: " +  playersStatistics.CheckHealthPlayer2();
             } 
         }
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WorldOfTanks2.Debuffs;
+using WorldOfTanks2.Scenes;
 
 namespace WorldOfTanks2
 {
@@ -16,7 +17,7 @@ namespace WorldOfTanks2
         //7
         public Mud(float x, float y, float height, float width, int objectType) : base(x, y, height, width, objectType)
         {
-            texture = Textures.LoadTexture(@"C:\Users\Asus\source\repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\Textures\mud.png");
+            texture = Textures2D.LoadTexture(texturesInstaller.SetTexture(objectType));
         }
     }
 }

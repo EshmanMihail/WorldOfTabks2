@@ -27,10 +27,10 @@ C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\bin\Debug\
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\bin\Debug\OpenTK.GLControl.xml
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.csproj.AssemblyReference.cache
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.csproj.SuggestedBindingRedirects.cache
-C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.Form1.resources
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.Properties.Resources.resources
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.csproj.GenerateResource.cache
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.csproj.CoreCompileInputs.cache
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.csproj.CopyComplete
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.exe
 C:\Users\Asus\Source\Repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.pdb
+C:\Users\Asus\source\repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\obj\Debug\WorldOfTanks2.WorldOfTanks2.resources

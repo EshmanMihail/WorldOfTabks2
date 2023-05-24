@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorldOfTanks2.Scene" Collapsed="true">
+    <Position X="4" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SgAEBCIAAIAAAAAQAEACAAAABwAAAAAAAAABAAAEAQA=</HashCode>
+      <FileName>Scenes\Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Action" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABIAAAAAAAAAAAAAIABAAAAEAIAAAwAEAAAAEA=</HashCode>
+      <FileName>InteractionWithGameScene\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Collider" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAACAAAAAAA=</HashCode>
+      <FileName>InteractionWithGameScene\Collider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.SceneIvents" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAABAAAAAAACAAAIAAAAgAAICAAAQEAAAAAAA=</HashCode>
+      <FileName>InteractionWithGameScene\SceneIvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.PlayersStatistics" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAIAEAAAAAAACAAAAAAAAMAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>InteractionWithGameScene\PlayersStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="coursework.Textures" Collapsed="true">
+    <Position X="5.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>InteractionWithGameScene\Textures.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Scenes.ObjectsTextures" Collapsed="true">
+    <Position X="7.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scenes\ObjectsTextures.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Weapon" Collapsed="true">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAA=</HashCode>
+      <FileName>Weapons\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Trunk" Collapsed="true">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAA=</HashCode>
+      <FileName>Weapons\Trunk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Machinegun" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAA=</HashCode>
+      <FileName>Weapons\Machinegun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.GameObject" Collapsed="true">
+    <Position X="4" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAECAACAAAgQAQAAAAAAIAAAAAwAEAABgAAAAAAA=</HashCode>
+      <FileName>GameObjects\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WorldOfTanks2.BaseTank" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARIACAARAIAIIwAABCAAAAQBYAAEAQAQAgBQEAEAQAA=</HashCode>
+      <FileName>GameObjects\BaseTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.InteractionWithGameScene.Tank" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARIAAAAAAIAIAQAABCAAAAABYAAEAAAQAgAAAAAAQAA=</HashCode>
+      <FileName>InteractionWithGameScene\Tank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Amo" Collapsed="true">
+    <Position X="5.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAACAAIAAIgAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Amo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Barrier" Collapsed="true">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Barrier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Wall" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.InteractionWithGameScene.SlowedTank" Collapsed="true">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARIAAEAAAIAIAwAABCAAAAAJYAAEAQAQAgAAAAAAQAA=</HashCode>
+      <FileName>InteractionWithGameScene\SlowedTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.InteractionWithGameScene.TankDecorator" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>InteractionWithGameScene\TankDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.InteractionWithGameScene.NotShootingTank" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARIAAEAAAIAIAwAABCAAAAAJYAAEAQAQAgAAAAAAQAA=</HashCode>
+      <FileName>InteractionWithGameScene\NotShootingTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Maze" Collapsed="true">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAABAgAAIAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mazes\Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Debuffs.DebuffObject" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgQAQAAAAEAAAAAAAgAAAABgAAAAYAA=</HashCode>
+      <FileName>Debuffs\DebuffObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Mist" Collapsed="true">
+    <Position X="9.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Debuffs\Mist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Mud" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Debuffs\Mud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

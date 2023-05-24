@@ -16,7 +16,7 @@ namespace WorldOfTanks2
         //6
         public Mist(float x, float y, float height, float width, int objectType) : base(x, y, height, width, objectType)
         {
-            texture = Textures.LoadTexture(@"C:\Users\Asus\source\repos\WorldOfTabks23\WorldOfTanks2\WorldOfTanks2\Textures\mist.png");
+            texture = Textures2D.LoadTexture(texturesInstaller.SetTexture(objectType));
         }
         public override void Draw()
         {

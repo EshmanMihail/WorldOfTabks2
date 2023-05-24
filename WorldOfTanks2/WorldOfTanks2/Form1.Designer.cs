@@ -1,6 +1,6 @@
 ﻿namespace WorldOfTanks2
 {
-    partial class Form1
+    partial class WorldOfTanks2
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -147,7 +147,7 @@
             this.ammunitionPlayer2.TabIndex = 16;
             this.ammunitionPlayer2.Text = "Боезапас:";
             // 
-            // Form1
+            // WorldOfTanks2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -163,7 +163,7 @@
             this.Controls.Add(this.glControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "WorldOfTanks2";
             this.ShowIcon = false;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

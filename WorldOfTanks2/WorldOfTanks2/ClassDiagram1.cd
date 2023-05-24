@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorldOfTanks2.Debuffs.DebuffObject" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgQAQAAAAEAAAAAAAgAAAABgAAAAYAA=</HashCode>
+      <FileName>Debuffs\DebuffObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Mist" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Debuffs\Mist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.Mud" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Debuffs\Mud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorldOfTanks2.SceneIvents" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAABAAAAAAACAAAIAAAAgAAICAAAQEAAAAAAA=</HashCode>
+      <FileName>InteractionWithGameScene\SceneIvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WorldOfTanks2.Scenes;
 
 namespace WorldOfTanks2.Debuffs
 {
@@ -22,7 +23,12 @@ namespace WorldOfTanks2.Debuffs
         /// <summary>
         /// Текстура объекта.
         /// </summary>
-        protected Textures texture;
+        protected Textures2D texture;
+
+        /// <summary>
+        /// Установщик текстур.
+        /// </summary>
+        protected TexturesDistributor texturesInstaller = new TexturesDistributor();
 
         /// <summary>
         /// Х координата объекта.
